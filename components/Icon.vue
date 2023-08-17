@@ -1,11 +1,11 @@
 <script setup>
-const props = defineProps({
-  name: String,
-});
+  const props = defineProps({
+    name: String,
+  })
 
-const IconSVG = defineAsyncComponent(() =>
-  import(`~/assets/images/${props.name}.svg?component`)
-);
+  const IconSVG = defineAsyncComponent(() =>
+    import(`~/assets/images/${props.name}.svg?component`)
+  )
 </script>
 
 <template>
