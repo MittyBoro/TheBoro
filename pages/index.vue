@@ -8,22 +8,6 @@ definePageMeta({
 </script>
 
 <template>
-  <HomeScreen class="mb-20" />
-  <ProjectsList />
+  <HomeScreen class="pb-20" />
+  <ProjectsList class="pb-20" />
 </template>
-
-<style lang="scss">
-.bg-box {
-  @apply shadow-xl rounded-xl p-8 mb-10 bg-gradient-to-br;
-}
-.pretitle {
-  letter-spacing: 0.5em;
-  @apply mb-2 text-gray-500 text-xs uppercase;
-}
-.title {
-  @apply font-head text-3xl mb-8;
-}
-.title-2 {
-  @apply font-head text-xl;
-}
-</style>

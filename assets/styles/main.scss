@@ -4,13 +4,9 @@
 
 /* ========= General ========= */
 ::selection {
-  @apply text-black bg-white;
+  @apply text-white bg-primary-700;
 }
 
 html {
   color-scheme: dark;
-}
-
-body {
-  @apply bg-black;
 }

@@ -20,6 +20,10 @@ module.exports = {
       primary: colors.rose,
       secondary: colors.slate,
     },
+    container: {
+      center: true,
+      padding: "2rem",
+    },
     fontFamily: {
       sans: ["Montserrat", "ui-sans-serif", "system-ui"],
       serif: ["ui-serif", "Georgia"],
