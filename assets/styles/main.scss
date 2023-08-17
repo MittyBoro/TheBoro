@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========= General ========= */
+::selection {
+  @apply text-black bg-white;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-black;
+}
