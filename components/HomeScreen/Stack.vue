@@ -4,54 +4,54 @@
     <div class="title">Что я использую</div>
 
     <div class="bg-box">
-      <div class="max-w-md">
+      <div class="elements max-w-md">
         <div class="pretitle-alt mb-5">Код</div>
         <div class="flex flex-wrap -mx-2">
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="vue"
             title="Фреймворк для создания пользовательских интерфейсов"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="nuxt"
             title="Фреймворк для универсальных приложений на основе Vue.js"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="vite"
             title="Быстрый инструмент для разработки современных веб-приложений"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="nodejs"
             title="Среда выполнения JavaScript на сервере"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="npm"
             title="Менеджер пакетов для зависимостей JavaScript"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="javascript"
             title="Язык программирования для интерактивных веб-сайтов и приложений"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="sass"
             title="Препроцессор CSS с дополнительными функциями"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="laravel"
             title="Фреймворк для веб-приложений на PHP"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="php"
             title="Скриптовый язык программирования для веб-разработки"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="mysql"
             title="Система управления базами данных для хранения данных"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="composer"
             title="Менеджер зависимостей для проектов на PHP"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="git"
             title="Система контроля версий для совместной разработки кода"
           />
@@ -59,35 +59,47 @@
 
         <div class="pretitle-alt mt-8 mb-5">Софт</div>
         <div class="flex flex-wrap -mx-2">
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="vscode"
             title="Кодовый редактор Visual Studio Code"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="figma"
             title="Инструмент для дизайна и прототипирования"
           />
-          <HomeScreenElBtn name="chrome" title="Веб-браузер Google Chrome" />
-          <HomeScreenElBtn name="firefox" title="Веб-браузер Mozilla Firefox" />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
+            name="chrome"
+            title="Веб-браузер Google Chrome"
+          />
+          <HomeScreenElStackBtn
+            name="firefox"
+            title="Веб-браузер Mozilla Firefox"
+          />
+          <HomeScreenElStackBtn
             name="photoshop"
             title="Графический редактор Adobe Photoshop"
           />
-          <HomeScreenElBtn name="telegram-logo" title="Мессенджер Telegram" />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
+            name="telegram-logo"
+            title="Мессенджер Telegram"
+          />
+          <HomeScreenElStackBtn
             name="windows"
             title="Операционная система Windows"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="caramba-switcher"
             title="Автоматический переключатель раскладки клавиатуры Caramba Swithcer"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="putty"
             title="Клиент для удаленного доступа к серврееу PuTTY"
           />
-          <HomeScreenElBtn name="wireguard" title="Протокол VPN WireGuard" />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
+            name="wireguard"
+            title="Протокол VPN WireGuard"
+          />
+          <HomeScreenElStackBtn
             name="yandex-disk"
             title="Облачное хранилище Yandex.Disk"
           />
@@ -95,24 +107,31 @@
 
         <div class="pretitle-alt mt-8 mb-5">Мне помогают</div>
         <div class="flex flex-wrap -mx-2">
-          <HomeScreenElBtn name="google" title="Поисковая система Google" />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
+            name="google"
+            title="Поисковая система Google"
+          />
+          <HomeScreenElStackBtn
+            name="bing"
+            title="Поисковая система Bing с чат-режимом"
+          />
+          <HomeScreenElStackBtn
+            name="chatgpt"
+            title="GPT модель для чатов и текстовых взаимодействий"
+          />
+          <HomeScreenElStackBtn
             name="github"
             title="Платформа для совместной разработки кода и управления версиями"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="stack-overflow"
             title="Сайт для вопросов и ответов по программированию"
           />
-          <HomeScreenElBtn
-            name="chatgpt"
-            title="Модель GPT для чатов и текстовых взаимодействий"
-          />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="youtube"
             title="Платформа для загрузки и просмотра видео"
           />
-          <HomeScreenElBtn
+          <HomeScreenElStackBtn
             name="reddit"
             title="Социальный новостной сайт с обсуждениями"
           />
@@ -121,3 +140,22 @@
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  .bg-box {
+    :deep(svg) {
+      filter: hue-rotate(40deg) sepia(100%) saturate(170%) hue-rotate(-40deg)
+        hue-rotate(hue(#bd183f));
+      filter: saturate(90%) brightness(90%);
+      transition: filter 0.3s, transform 0.3s;
+      @apply scale-90;
+    }
+
+    &:hover {
+      :deep(.btn-sq:hover svg) {
+        filter: brightness(110%);
+        @apply scale-125;
+      }
+    }
+  }
+</style>
