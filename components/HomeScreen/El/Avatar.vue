@@ -1,57 +1,100 @@
 <script setup>
-  const transformProps = reactive({
-    scale: 1,
-    translateY: 0,
-  })
+  const DISTANCE_TO_OBJECT = 200
 
-  const DISTANCE_TO_OBJECT = 150
-
-  const backgroundPosition = ref('100% 100%')
   const avatarDiv = ref(null)
+  const audio = ref(null)
 
-  const imgTransform = computed(() => {
-    return Object.entries(transformProps)
+  const imgStyle = reactive({
+    transform: '',
+    transformProps: {
+      scale: 1,
+      translateY: 0,
+    },
+    filter: '',
+  })
+  watch(imgStyle.transformProps, (val) => {
+    imgStyle.transform = Object.entries(val)
       .map(([key, value]) => `${key}(${value})`)
       .join(' ')
   })
 
-  const handleMouseMove = (event) => {
-    transformProps.scale = getValueByDistance(
-      event,
-      avatarDiv.value,
-      1,
-      1.8,
-      DISTANCE_TO_OBJECT
-    )
-    transformProps.translateY =
-      getValueByDistance(event, avatarDiv.value, 0, 8, DISTANCE_TO_OBJECT) + '%'
+  const avatarStyle = reactive({
+    backgroundPosition: '100% 100%',
+    animationPlayState: 'paused',
+  })
 
-    let bgP = getValueByDistance(
+  const getValues = (from, to, event) => {
+    const value = getValueByDistance(
       event,
       avatarDiv.value,
-      100,
-      0,
+      from,
+      to,
       DISTANCE_TO_OBJECT
-    )
-    backgroundPosition.value = `${bgP}% ${bgP}%`
+    ).toFixed(2)
+
+    return parseFloat(value)
   }
 
-  onMounted(() => document.addEventListener('mousemove', handleMouseMove))
-  onUnmounted(() => document.removeEventListener('mousemove', handleMouseMove))
+  const handleMouseMove = (event) => {
+    // приближение и стили авы
+    imgStyle.transformProps.scale = getValues(1, 1.7, event)
+    imgStyle.transformProps.translateY = getValues(0, 8, event) + '%'
+    let saturate = getValues(75, 130, event).toFixed(1)
+    imgStyle.filter = `saturate(${saturate}%)`
+
+    // изменение цвета рамки
+    let bgP = getValues(100, 0, event)
+    avatarStyle.backgroundPosition = `${bgP}% ${bgP}%`
+
+    if (audio.value) {
+      if (getDistanceToElement(event, avatarDiv.value) < DISTANCE_TO_OBJECT) {
+        // вибрация фото
+        avatarStyle.animationPlayState = 'running'
+        let shift = getValues(0, 3, event).toFixed(0) + 'px'
+        document.documentElement.style.setProperty('--animation-move', shift)
+
+        // громкость музыки
+        audio.value.volume = getValues(0, 0.3, event).toFixed(3)
+      } else {
+        avatarStyle.animationPlayState = 'paused'
+      }
+    }
+  }
+
+  const muteAudio = () => {
+    if (audio.value) audio.value.volume = 0
+  }
+
+  const playSound = async () => {
+    audio.value = new Audio()
+    audio.value.src = (await import('~/assets/audios/2.mp3')).default
+    audio.value.play()
+    audio.value.volume = 0
+    audio.value.playbackRate = 0.7
+
+    audio.value.addEventListener('ended', () => {
+      audio.value.currentTime = 0
+      audio.value.play()
+    })
+  }
+
+  onMounted(() => {
+    window.addEventListener('mouseout', muteAudio)
+    document.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener('click', playSound, { once: true })
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener('mouseout', muteAudio)
+    document.removeEventListener('mousemove', handleMouseMove)
+    document.removeEventListener('click', playSound)
+  })
 </script>
 
 <template>
-  <div
-    class="avatar w-40 h-40 mb-10 star"
-    :style="{ backgroundPosition: backgroundPosition }"
-    ref="avatarDiv"
-  >
+  <div class="avatar w-40 h-40 mb-10 star" :style="avatarStyle" ref="avatarDiv">
     <div class="avatar-img-wrap">
-      <img
-        src="~/assets/images/ava.png"
-        alt=""
-        :style="{ transform: imgTransform }"
-      />
+      <img src="~/assets/images/ava.png" alt="" :style="imgStyle" />
     </div>
   </div>
 </template>
@@ -59,7 +102,9 @@
 <style lang="scss" scoped>
   .avatar {
     background-image: var(--gradietnt);
+    background-position: 100% 100%;
     background-size: 250% 250%;
+    animation: vibration 0.7s infinite;
 
     --gradietnt: linear-gradient(
       to bottom right,
@@ -76,5 +121,46 @@
     .avatar-img-wrap {
       @apply rounded-full overflow-hidden;
     }
+    img {
+      filter: saturate(75%);
+    }
+  }
+  @keyframes vibration {
+    0% {
+      transform: translate(0, 0);
+    }
+    20% {
+      transform: translate(
+        var(--animation-move),
+        calc(var(--animation-move) * -1)
+      );
+    }
+    40% {
+      transform: translate(
+        calc(var(--animation-move) * -1),
+        var(--animation-move)
+      );
+    }
+    60% {
+      transform: translate(
+        calc(var(--animation-move) * 1.5),
+        calc(var(--animation-move) * 0.5)
+      );
+    }
+    80% {
+      transform: translate(
+        calc(var(--animation-move) * -0.5),
+        calc(var(--animation-move) * -1.5)
+      );
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+</style>
+
+<style lang="scss">
+  :root {
+    --animation-move: 0px;
   }
 </style>

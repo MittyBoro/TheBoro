@@ -19,18 +19,30 @@
 
     <div class="pretitle">Я здесь</div>
     <div class="flex mt-3">
-      <div class="btn-mini btn-alt aspect-square mr-4">
-        <Icon name="ig" class="scale-75" />
-      </div>
-      <div class="btn-mini btn-alt aspect-square mr-4"><Icon name="tg" /></div>
-      <div class="btn-mini btn-alt aspect-square mr-4"><Icon name="vk" /></div>
-      <NuxtLink
-        :to="{ hash: '#projects' }"
-        :external="true"
-        class="btn-mini btn ml-auto"
-      >
-        <span>Портфолио</span>
-      </NuxtLink>
+      <ElAudioHover>
+        <div class="btn-mini btn-alt aspect-square mr-4">
+          <Icon name="ig" class="scale-75" />
+        </div>
+      </ElAudioHover>
+      <ElAudioHover>
+        <div class="btn-mini btn-alt aspect-square mr-4">
+          <Icon name="tg" />
+        </div>
+      </ElAudioHover>
+      <ElAudioHover>
+        <div class="btn-mini btn-alt aspect-square mr-4">
+          <Icon name="vk" />
+        </div>
+      </ElAudioHover>
+      <ElAudioHover class="ml-auto">
+        <NuxtLink
+          :to="{ hash: '#projects' }"
+          :external="true"
+          class="btn-mini btn"
+        >
+          <span>Портфолио</span>
+        </NuxtLink>
+      </ElAudioHover>
     </div>
   </div>
 </template>
