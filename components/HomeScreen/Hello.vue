@@ -24,9 +24,13 @@
       </div>
       <div class="btn-mini btn-alt aspect-square mr-4"><Icon name="tg" /></div>
       <div class="btn-mini btn-alt aspect-square mr-4"><Icon name="vk" /></div>
-      <div class="btn-mini btn ml-auto">
+      <NuxtLink
+        :to="{ hash: '#projects' }"
+        :external="true"
+        class="btn-mini btn ml-auto"
+      >
         <span>Портфолио</span>
-      </div>
+      </NuxtLink>
     </div>
   </div>
 </template>

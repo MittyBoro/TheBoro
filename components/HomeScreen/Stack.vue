@@ -146,15 +146,15 @@
     :deep(svg) {
       filter: hue-rotate(40deg) sepia(100%) saturate(170%) hue-rotate(-40deg)
         hue-rotate(hue(#bd183f));
-      filter: saturate(90%) brightness(90%);
+      filter: saturate(85%) brightness(85%);
       transition: filter 0.3s, transform 0.3s;
       @apply scale-90;
     }
 
     &:hover {
       :deep(.btn-sq:hover svg) {
-        filter: brightness(110%);
-        @apply scale-125;
+        filter: brightness(105%);
+        @apply scale-110;
       }
     }
   }

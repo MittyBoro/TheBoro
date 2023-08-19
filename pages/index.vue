@@ -8,6 +8,6 @@
 </script>
 
 <template>
-  <HomeScreen class="pb-32" />
-  <ProjectsList class="pb-32" />
+  <HomeScreen class="pb-16" />
+  <ProjectsList class="py-16" />
 </template>

@@ -2,32 +2,37 @@
   let xPos = ref(0)
   let yPos = ref(0)
   let opacity = ref(0)
-  const mainOpacity = 0.6
+
+  const MAIN_OPACITY = 0.6
+  const DISTANCE_TO_OBJECTS = 200
 
   const handleMouseMove = (event) => {
     xPos.value = event.clientX
     yPos.value = event.clientY
 
-    opacity.value = mainOpacity
+    opacity.value = MAIN_OPACITY
 
     document.querySelectorAll('.blackhole, .star').forEach((element) => {
-      if (element) {
-        const avatarRect = element.getBoundingClientRect()
-        const distance =
-          Math.sqrt(
-            (event.clientX - (avatarRect.left + avatarRect.width / 2)) ** 2 +
-              (event.clientY - (avatarRect.top + avatarRect.height / 2)) ** 2
-          ) - 60
+      const distance = getDistanceToElement(event, element)
 
-        if (distance <= 200) {
-          const maxDistance = 200
-          if (element.classList.contains('star')) {
-            opacity.value =
-              mainOpacity + (1 - mainOpacity) * (1 - distance / maxDistance)
-          } else if (element.classList.contains('blackhole')) {
-            opacity.value = (mainOpacity * distance) / maxDistance
-          }
-        }
+      if (distance > DISTANCE_TO_OBJECTS) return
+
+      if (element.classList.contains('star')) {
+        opacity.value = getValueByDistance(
+          event,
+          element,
+          MAIN_OPACITY,
+          1,
+          DISTANCE_TO_OBJECTS
+        )
+      } else if (element.classList.contains('blackhole')) {
+        opacity.value = getValueByDistance(
+          event,
+          element,
+          MAIN_OPACITY,
+          0.2,
+          DISTANCE_TO_OBJECTS
+        )
       }
     })
   }

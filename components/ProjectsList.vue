@@ -62,7 +62,7 @@
           </div>
         </div>
       </template>
-      <div class="mt-4 col-start-2 btn-alt blackhole">Показать ещё</div>
+      <div class="mt-8 col-start-2 btn-alt blackhole">Показать ещё</div>
     </div>
   </div>
 </template>
