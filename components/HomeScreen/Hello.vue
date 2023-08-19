@@ -52,7 +52,7 @@
 
 <template>
   <div>
-    <div class="avatar w-40 h-40 mb-10">
+    <div class="avatar w-40 h-40 mb-10 blackhole">
       <img src="~/assets/images/ava.png" alt="" />
     </div>
     <div class="font-head mb-6">
@@ -62,44 +62,42 @@
       </div>
       <div class="mt-1 text-3xl">
         и я —
-        <span class="text-gray-500 typing">{{ whoAmI }}</span>
+        <span class="text-white text-opacity-50 typing">{{ whoAmI }}</span>
       </div>
     </div>
-    <div class="mt-6 mb-28 text-gray-500 font-thin">
+    <div class="mt-6 mb-28 text-white text-opacity-50 font-thin">
       Моя цель – объединить лучшие аспекты дизайна и программирования для
       создания веб-приложений, которые вдохновляют и удивляют! Готов превратить
       вашу концепцию в функциональную реальность!
     </div>
 
-    <div class="pretitle text-gray-500">Я здесь</div>
+    <div class="pretitle">Я здесь</div>
     <div class="flex mt-3">
-      <div class="btn-social btn-alt aspect-square">
+      <div class="btn-mini btn-alt aspect-square mr-4">
         <Icon name="ig" class="scale-75" />
       </div>
-      <div class="btn-social btn-alt aspect-square"><Icon name="tg" /></div>
-      <div class="btn-social btn-alt aspect-square"><Icon name="vk" /></div>
-      <div class="btn-social btn ml-auto">
-        <span class="px-4">Портфолио</span>
+      <div class="btn-mini btn-alt aspect-square mr-4"><Icon name="tg" /></div>
+      <div class="btn-mini btn-alt aspect-square mr-4"><Icon name="vk" /></div>
+      <div class="btn-mini btn ml-auto">
+        <span>Портфолио</span>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .btn-social {
-    @apply h-12 p-3 rounded flex justify-center items-center transition-all mr-6;
+  .btn-mini {
     svg {
       @apply w-auto h-auto fill-current;
     }
   }
-
   .avatar {
     @apply rounded-full shadow-2xl shadow-black border-8 border-gray-900 overflow-hidden transition-all;
     img {
       @apply transition scale-110;
     }
     &:hover {
-      @apply shadow-xl shadow-primary-950 border-4 border-primary-700;
+      @apply shadow-2xl shadow-primary-950 border-4 border-primary-700;
       img {
         @apply scale-150;
       }

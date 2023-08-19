@@ -29,7 +29,7 @@
 
 <template>
   <div>
-    <div class="pretitle">Ништяки</div>
+    <div class="pretitle">Services</div>
     <div class="title">Что я делаю</div>
 
     <div class="grid grid-cols-2 gap-x-8 gap-y-10">

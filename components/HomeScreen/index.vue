@@ -8,6 +8,7 @@
 
     <div class="col-span-4">
       <HomeScreenWhatIDo class="mb-24" />
+      <HomeScreenStack class="mb-24" />
       <HomeScreenMyWay />
     </div>
   </div>

@@ -1,85 +1,53 @@
+<script setup>
+  let xPos = ref(0)
+  let yPos = ref(0)
+  let opacity = ref(0)
+
+  const handleMouseMove = (event) => {
+    xPos.value = event.clientX
+    yPos.value = event.clientY
+
+    opacity.value = 1
+
+    document.querySelectorAll('.blackhole').forEach((element) => {
+      if (element) {
+        const avatarRect = element.getBoundingClientRect()
+        const distance = Math.sqrt(
+          (event.clientX - (avatarRect.left + avatarRect.width / 2)) ** 2 +
+            (event.clientY - (avatarRect.top + avatarRect.height / 2)) ** 2
+        )
+
+        if (distance <= 400) {
+          const maxDistance = 400
+          opacity.value = distance / maxDistance
+        }
+      }
+    })
+  }
+</script>
+
 <template>
-  <div class="bg-gradient-to-br from-gray-950 to-gray-900 text-gray-200">
-    <slot></slot>
+  <div
+    class="relative bg-gradient-to-br from-gray-950 to-gray-900 text-white text-opacity-80"
+    @mousemove="handleMouseMove"
+  >
+    <div
+      class="mouse-light"
+      :style="{ left: xPos + 'px', top: yPos + 'px', opacity: opacity }"
+    ></div>
+    <div class="relative">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
-<style lang="scss">
-  .bg-box {
-    @apply relative shadow-2xl shadow-gray-950 rounded-2xl p-8 bg-gradient-to-br from-gray-950 overflow-hidden transition;
-    &::after {
-      content: '';
-
-      @apply absolute inset-0 pointer-events-none;
-    }
-    &:hover {
-      @apply shadow-2xl shadow-black;
-    }
-    &.hover {
-      &::before {
-        content: '';
-        @apply absolute inset-0  opacity-0 transition-opacity duration-300;
-        @apply bg-gradient-to-br from-gray-950  to-primary-950;
-      }
-      &:hover {
-        @apply shadow-2xl shadow-primary-950 -translate-y-2;
-        &::before {
-          @apply opacity-100;
-        }
-        img {
-          @apply scale-110 opacity-100;
-        }
-      }
-      img {
-        @apply transition opacity-80;
-      }
-    }
-  }
-  .pretitle {
-    letter-spacing: 0.5em;
-    @apply mb-2 text-xs uppercase opacity-50;
-  }
-  .pretitle-alt {
-    letter-spacing: 0.15em;
-    @apply mb-2 text-xs uppercase opacity-40;
-  }
-  .title {
-    @apply font-head text-4xl mb-8 tracking-widest;
-  }
-  .title-alt {
-    @apply font-head text-xl tracking-widest;
-  }
-  .container {
-    @apply max-w-screen-xl;
-  }
-  .btn,
-  .btn-alt {
-    @apply relative px-8 py-6 rounded-xl;
-    @apply font-head text-center uppercase tracking-widest text-xs;
-    @apply cursor-pointer transition-all duration-300 overflow-hidden;
-    &:hover {
-      @apply -translate-y-1;
-    }
-  }
-
-  .btn {
-    background-position: 100% 50%;
-    background-size: 200%;
-
-    @apply bg-gradient-to-r from-primary-600 via-primary-600 to-primary-800 text-white;
-    @apply shadow-xl;
-
-    &:hover {
-      background-position: 0% 50%;
-      @apply shadow-2xl shadow-primary-950;
-    }
-  }
-
-  .btn-alt {
-    @apply text-gray-400 border-gray-800 border-4;
-    @apply shadow-xl shadow-gray-950;
-    &:hover {
-      @apply bg-gray-100 border-gray-100 shadow-xl shadow-gray-700 text-primary-600;
-    }
+<style lang="scss" scoped>
+  .mouse-light {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    filter: blur(100px);
+    transform: translate(-50%, -50%);
+    @apply bg-primary-900;
   }
 </style>

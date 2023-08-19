@@ -1,36 +1,36 @@
 <script setup>
-const list = [
-  {
-    image: "https://picsum.photos/id/111/500/300",
-    tags: "сайт, сайтец, сайтище",
-    title: "Невъебенный Мммегасайт",
-  },
-  {
-    image: "https://picsum.photos/id/220/500/300",
-    tags: "сайт, сайтец, сайтище",
-    title: "Невъебенный Мммегасайт",
-  },
-  {
-    image: "https://picsum.photos/id/397/500/300",
-    tags: "сайт, сайтец, сайтище",
-    title: "Невъебенный Мммегасайт",
-  },
-  {
-    image: "https://picsum.photos/id/402/500/300",
-    tags: "сайт, сайтец, сайтище",
-    title: "Невъебенный Мммегасайт",
-  },
-  {
-    image: "https://picsum.photos/id/550/500/300",
-    tags: "сайт, сайтец, сайтище",
-    title: "Невъебенный Мммегасайт",
-  },
-  {
-    image: "https://picsum.photos/id/600/500/300",
-    tags: "сайт, сайтец, сайтище",
-    title: "Невъебенный Мммегасайт",
-  },
-];
+  const list = [
+    {
+      image: 'https://picsum.photos/id/111/500/300',
+      tags: 'сайт, сайтец, сайтище',
+      title: 'Невъебенный Мммегасайт',
+    },
+    {
+      image: 'https://picsum.photos/id/220/500/300',
+      tags: 'сайт, сайтец, сайтище',
+      title: 'Невъебенный Мммегасайт',
+    },
+    {
+      image: 'https://picsum.photos/id/397/500/300',
+      tags: 'сайт, сайтец, сайтище',
+      title: 'Невъебенный Мммегасайт',
+    },
+    {
+      image: 'https://picsum.photos/id/402/500/300',
+      tags: 'сайт, сайтец, сайтище',
+      title: 'Невъебенный Мммегасайт',
+    },
+    {
+      image: 'https://picsum.photos/id/550/500/300',
+      tags: 'сайт, сайтец, сайтище',
+      title: 'Невъебенный Мммегасайт',
+    },
+    {
+      image: 'https://picsum.photos/id/600/500/300',
+      tags: 'сайт, сайтец, сайтище',
+      title: 'Невъебенный Мммегасайт',
+    },
+  ]
 </script>
 
 <template>
@@ -62,27 +62,29 @@ const list = [
           </div>
         </div>
       </template>
-      <div class="mt-4 col-start-2 btn-alt">Показать ещё</div>
+      <div class="mt-4 col-start-2 btn-alt blackhole">Показать ещё</div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.ex-link {
-  cursor: pointer;
-  @apply transition-colors;
-  &:hover {
-    @apply text-primary-600;
-    .ex-icon {
-      @apply scale-100 opacity-100;
+  .bg-box {
+    overflow: hidden;
+  }
+  .ex-link {
+    cursor: pointer;
+    @apply transition-colors;
+    &:hover {
+      @apply text-primary-600;
+      .ex-icon {
+        @apply scale-100 opacity-100;
+      }
     }
   }
-}
-.ex-icon {
-  margin-right: -1em;
+  .ex-icon {
+    margin-right: -1em;
+    width: 1em;
 
-  width: 1em;
-
-  @apply inline h-auto ml-2 fill-primary-600 opacity-0 transition-all scale-0 duration-500;
-}
+    @apply inline h-auto ml-2 fill-primary-600 opacity-0 transition-all scale-0 duration-500;
+  }
 </style>
