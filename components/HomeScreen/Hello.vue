@@ -52,8 +52,10 @@
 
 <template>
   <div>
-    <div class="avatar w-40 h-40 mb-10 blackhole">
-      <img src="~/assets/images/ava.png" alt="" />
+    <div class="avatar w-40 h-40 mb-10 star">
+      <div class="avatar-img-wrap">
+        <img src="~/assets/images/ava.png" alt="" />
+      </div>
     </div>
     <div class="font-head mb-6">
       <div class="text-3xl drop-shadow-xl">
@@ -92,12 +94,30 @@
     }
   }
   .avatar {
-    @apply rounded-full shadow-2xl shadow-black border-8 border-gray-900 overflow-hidden transition-all;
+    background-image: var(--gradietnt);
+    background-position: 100% 100%;
+    background-size: 250% 250%;
+
+    --gradietnt: linear-gradient(
+      to bottom right,
+      theme(colors.primary.600/0.75),
+      theme(colors.primary.800/0759),
+      theme(colors.gray.900/0.75),
+      theme(colors.gray.950/0.75)
+    );
+
+    @apply p-2 relative rounded-full;
+    @apply shadow-2xl shadow-black;
+    @apply transition-all duration-300;
+    .avatar-img-wrap {
+      @apply rounded-full overflow-hidden;
+    }
     img {
       @apply transition scale-110;
     }
     &:hover {
-      @apply shadow-2xl shadow-primary-950 border-4 border-primary-700;
+      background-position: 0 0;
+      @apply shadow-2xl shadow-primary-800;
       img {
         @apply scale-150;
       }

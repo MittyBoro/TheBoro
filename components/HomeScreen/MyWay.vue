@@ -89,10 +89,10 @@
     }
     &:hover {
       &::after {
-        @apply bg-primary-900;
+        @apply bg-primary-700;
       }
       .date {
-        @apply text-primary-700;
+        @apply text-primary-600;
       }
     }
   }

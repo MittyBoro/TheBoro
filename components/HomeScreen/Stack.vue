@@ -1,9 +1,3 @@
-<script setup>
-  import Popper from 'vue3-popper'
-
-  defineComponent(Popper)
-</script>
-
 <template>
   <div>
     <div class="pretitle">Stack</div>
@@ -13,51 +7,51 @@
       <div class="max-w-md">
         <div class="pretitle-alt mb-5">Код</div>
         <div class="flex flex-wrap -mx-2">
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="vue"
             title="Фреймворк для создания пользовательских интерфейсов"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="nuxt"
             title="Фреймворк для универсальных приложений на основе Vue.js"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="vite"
             title="Быстрый инструмент для разработки современных веб-приложений"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="nodejs"
             title="Среда выполнения JavaScript на сервере"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="npm"
             title="Менеджер пакетов для зависимостей JavaScript"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="javascript"
             title="Язык программирования для интерактивных веб-сайтов и приложений"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="sass"
             title="Препроцессор CSS с дополнительными функциями"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="laravel"
             title="Фреймворк для веб-приложений на PHP"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="php"
             title="Скриптовый язык программирования для веб-разработки"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="mysql"
             title="Система управления базами данных для хранения данных"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="composer"
             title="Менеджер зависимостей для проектов на PHP"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="git"
             title="Система контроля версий для совместной разработки кода"
           />
@@ -65,41 +59,35 @@
 
         <div class="pretitle-alt mt-8 mb-5">Софт</div>
         <div class="flex flex-wrap -mx-2">
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="vscode"
             title="Кодовый редактор Visual Studio Code"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="figma"
             title="Инструмент для дизайна и прототипирования"
           />
-          <HomeScreenElPopper name="chrome" title="Веб-браузер Google Chrome" />
-          <HomeScreenElPopper
-            name="firefox"
-            title="Веб-браузер Mozilla Firefox"
-          />
-          <HomeScreenElPopper
+          <HomeScreenElBtn name="chrome" title="Веб-браузер Google Chrome" />
+          <HomeScreenElBtn name="firefox" title="Веб-браузер Mozilla Firefox" />
+          <HomeScreenElBtn
             name="photoshop"
             title="Графический редактор Adobe Photoshop"
           />
-          <HomeScreenElPopper
-            name="telegram-logo"
-            title="Мессенджер Telegram"
-          />
-          <HomeScreenElPopper
+          <HomeScreenElBtn name="telegram-logo" title="Мессенджер Telegram" />
+          <HomeScreenElBtn
             name="windows"
             title="Операционная система Windows"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="caramba-switcher"
             title="Автоматический переключатель раскладки клавиатуры Caramba Swithcer"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="putty"
             title="Клиент для удаленного доступа к серврееу PuTTY"
           />
-          <HomeScreenElPopper name="wireguard" title="Протокол VPN WireGuard" />
-          <HomeScreenElPopper
+          <HomeScreenElBtn name="wireguard" title="Протокол VPN WireGuard" />
+          <HomeScreenElBtn
             name="yandex-disk"
             title="Облачное хранилище Yandex.Disk"
           />
@@ -107,24 +95,24 @@
 
         <div class="pretitle-alt mt-8 mb-5">Мне помогают</div>
         <div class="flex flex-wrap -mx-2">
-          <HomeScreenElPopper name="google" title="Поисковая система Google" />
-          <HomeScreenElPopper
+          <HomeScreenElBtn name="google" title="Поисковая система Google" />
+          <HomeScreenElBtn
             name="github"
             title="Платформа для совместной разработки кода и управления версиями"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="stack-overflow"
             title="Сайт для вопросов и ответов по программированию"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="chatgpt"
             title="Модель GPT для чатов и текстовых взаимодействий"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="youtube"
             title="Платформа для загрузки и просмотра видео"
           />
-          <HomeScreenElPopper
+          <HomeScreenElBtn
             name="reddit"
             title="Социальный новостной сайт с обсуждениями"
           />

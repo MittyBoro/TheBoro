@@ -1,6 +1,5 @@
 <script setup>
-  import Popper from 'vue3-popper'
-  defineComponent(Popper)
+  import Popper from 'vue3-popper/dist/popper.esm'
 
   const props = defineProps({
     name: String,
@@ -9,11 +8,11 @@
 </script>
 
 <template>
-  <Popper :content="props.title" arrow hover placement="top">
+  <component :is="Popper" :content="props.title" arrow hover placement="top">
     <div class="btn-mini btn-alt btn-sq">
       <Icon :name="props.name" />
     </div>
-  </Popper>
+  </component>
 </template>
 
 <style lang="scss" scoped>

@@ -34,7 +34,7 @@
 </script>
 
 <template>
-  <div class="projects-screen container">
+  <div class="projects-screen container" id="projects">
     <div class="text-center">
       <div class="pretitle">отборные шедевры</div>
       <div class="title">Портфолио</div>
