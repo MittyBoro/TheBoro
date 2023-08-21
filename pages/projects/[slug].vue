@@ -1,12 +1,11 @@
 <script setup>
-const nuxt = useNuxtApp();
-console.log("nuxt", nuxt);
-
-definePageMeta({
-  title: "My nuxt page",
-});
+  definePageMeta({
+    title: 'My nuxt page',
+  })
 </script>
 
 <template>
-  <div>slug: {{ $route.params.slug }}</div>
+  <main class="min-h-screen flex items-center pt-10 pb-16 -mt-16">
+    <ScreensSingleProject />
+  </main>
 </template>

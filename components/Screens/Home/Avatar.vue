@@ -68,6 +68,7 @@
   const playSound = async () => {
     audio.value = new Audio()
     audio.value.src = (await import('~/assets/audios/2.mp3')).default
+
     audio.value.play()
     audio.value.volume = 0
     audio.value.playbackRate = 0.7
@@ -92,7 +93,7 @@
 </script>
 
 <template>
-  <div class="avatar w-40 h-40 mb-10 star" :style="avatarStyle" ref="avatarDiv">
+  <div class="avatar w-40 h-40 star" :style="avatarStyle" ref="avatarDiv">
     <div class="avatar-img-wrap">
       <img src="~/assets/images/ava.png" alt="" :style="imgStyle" />
     </div>

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --scroll-behavior: 'smooth';
+}
+
 /* ========= General ========= */
 ::selection {
   @apply text-white bg-primary-700;
@@ -9,34 +13,27 @@
 
 html {
   color-scheme: dark;
-  scroll-behavior: smooth;
+  scroll-behavior: var(--scroll-behavior);
 }
 
-.bg-box {
-  @apply relative p-8 rounded-2xl transition;
-  @apply bg-gradient-to-br from-gray-950 bg-gray-950 bg-opacity-10;
-  @apply shadow-2xl shadow-gray-950;
-  &::after {
-    content: '';
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.2s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  @apply blur-sm;
+}
 
-    @apply absolute inset-0 pointer-events-none;
-  }
+.link {
+  cursor: pointer;
+  @apply transition-colors;
   &:hover {
-    @apply shadow-xl shadow-gray-950;
-  }
-  &.hover {
-    &:hover {
-      @apply shadow-2xl shadow-primary-950 -translate-y-2;
-      @apply bg-primary-950 bg-opacity-50;
-      img {
-        @apply scale-110 opacity-100;
-      }
-    }
-    img {
-      @apply transition opacity-80;
-    }
+    @apply text-primary-400;
   }
 }
+
 .pretitle {
   letter-spacing: 0.5em;
   @apply mb-2 text-xs uppercase opacity-50;
@@ -87,7 +84,7 @@ html {
 
 .btn-mini {
   @apply rounded h-12 p-3 flex justify-center items-center transition-all;
-  svg {
+  .svg {
     @apply w-auto h-auto;
   }
   span {

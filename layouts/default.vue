@@ -1,16 +1,18 @@
 <script setup>
-  let xPos = ref(0)
-  let yPos = ref(0)
-  let opacity = ref(0)
+  const lightStyle = reactive({
+    top: 0,
+    left: 0,
+    opacity: 0,
+  })
 
   const MAIN_OPACITY = 0.6
   const DISTANCE_TO_OBJECTS = 200
 
   const handleMouseMove = (event) => {
-    xPos.value = event.clientX
-    yPos.value = event.clientY
+    lightStyle.top = event.clientY + 'px'
+    lightStyle.left = event.clientX + 'px'
 
-    opacity.value = MAIN_OPACITY
+    lightStyle.opacity = MAIN_OPACITY
 
     document.querySelectorAll('.blackhole, .star').forEach((element) => {
       const distance = getDistanceToElement(event, element)
@@ -18,7 +20,7 @@
       if (distance > DISTANCE_TO_OBJECTS) return
 
       if (element.classList.contains('star')) {
-        opacity.value = getValueByDistance(
+        lightStyle.opacity = getValueByDistance(
           event,
           element,
           MAIN_OPACITY,
@@ -26,7 +28,7 @@
           DISTANCE_TO_OBJECTS
         )
       } else if (element.classList.contains('blackhole')) {
-        opacity.value = getValueByDistance(
+        lightStyle.opacity = getValueByDistance(
           event,
           element,
           MAIN_OPACITY,
@@ -39,22 +41,20 @@
 </script>
 
 <template>
-  <div
-    class="wrapper relative bg-gradient-to-br from-gray-950 to-gray-900 text-white text-opacity-80"
-    @mousemove="handleMouseMove"
-  >
-    <div
-      class="mouse-light"
-      :style="{ left: xPos + 'px', top: yPos + 'px', opacity: opacity }"
-    ></div>
-    <div class="relative">
+  <div class="wrapper" @mousemove="handleMouseMove">
+    <!-- <div class="mouse-light" :style="lightStyle"></div> -->
+    <div class="relative pt-16">
       <slot></slot>
+      <ScreensFooter class="relative" />
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
   .wrapper {
+    @apply relative  min-h-screen;
+    @apply bg-gradient-to-br from-gray-950 to-gray-900;
+    @apply text-white text-opacity-80;
     &::before {
       --bg-start: theme(colors.primary.700);
       content: '';

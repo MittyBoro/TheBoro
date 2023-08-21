@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HomeScreenElAvatar class="mb-10" />
+    <ScreensHomeAvatar class="mb-10" />
     <div class="font-head mb-6">
       <div class="text-3xl drop-shadow-xl">
         Привет, я
@@ -8,7 +8,7 @@
       </div>
       <div class="mt-1 text-3xl">
         и я —
-        <HomeScreenElTyping class="text-white text-opacity-50" />
+        <ScreensHomeTyping class="text-white text-opacity-50" />
       </div>
     </div>
     <div class="mt-6 mb-28 text-white text-opacity-50 font-thin">
@@ -21,17 +21,17 @@
     <div class="flex mt-3">
       <AudioHover>
         <div class="btn-mini btn-alt aspect-square mr-4">
-          <Icon name="ig" class="scale-75" />
+          <Icon name="ig" class="scale-75 svg" />
         </div>
       </AudioHover>
       <AudioHover>
         <div class="btn-mini btn-alt aspect-square mr-4">
-          <Icon name="tg" />
+          <Icon name="tg" class="svg" />
         </div>
       </AudioHover>
       <AudioHover>
         <div class="btn-mini btn-alt aspect-square mr-4">
-          <Icon name="vk" />
+          <Icon name="vk" class="svg" />
         </div>
       </AudioHover>
       <AudioHover class="ml-auto">

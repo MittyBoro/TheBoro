@@ -53,18 +53,16 @@
     <div class="flex">
       <div class="w-2 rounded-lg bg-gray-950 shadow-xl shadow-gray-800"></div>
       <div class="ml-9 grid gap-10 w-full">
-        <template v-for="item in myWay">
-          <div class="bg-box">
-            <div class="title-alt max-w-lg">{{ item.title }}</div>
-            <div class="date mt-3 mb-5">
-              {{ item.date }}
-            </div>
-            <div
-              class="text-sm leading-6 text-gray-400 max-w-lg"
-              v-html="item.description"
-            ></div>
+        <Box v-for="item in myWay" :key="item.title">
+          <div class="title-alt max-w-lg">{{ item.title }}</div>
+          <div class="date mt-3 mb-5">
+            {{ item.date }}
           </div>
-        </template>
+          <div
+            class="text-sm leading-6 text-gray-400 max-w-lg"
+            v-html="item.description"
+          ></div>
+        </Box>
       </div>
     </div>
   </div>

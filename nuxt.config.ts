@@ -2,6 +2,7 @@ import svgLoader from 'vite-svg-loader'
 
 export default defineNuxtConfig({
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       link: [
         {
@@ -12,6 +13,10 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/styles/main.scss'],
+  components: [
+    { path: '~/components/Elements', pathPrefix: false },
+    '~/components',
+  ],
   postcss: {
     plugins: {
       'postcss-import': {},
@@ -20,6 +25,7 @@ export default defineNuxtConfig({
     },
   },
   // ssr: false,
+  devtools: { enabled: true },
 
   vite: {
     plugins: [svgLoader()],

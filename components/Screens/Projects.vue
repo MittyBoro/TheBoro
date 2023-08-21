@@ -34,48 +34,50 @@
 </script>
 
 <template>
-  <div class="projects-screen container" id="projects">
+  <section class="projects-screen container">
     <div class="text-center">
       <div class="pretitle">отборные шедевры</div>
       <div class="title">Портфолио</div>
     </div>
     <div class="grid grid-cols-3 gap-x-8 gap-y-10">
-      <template v-for="item in list" :key="item.image">
-        <div class="bg-box hover">
-          <div class="relative">
-            <div
-              class="bg-gray-950 shadow-lg mb-6 rounded-lg overflow-hidden cursor-pointer aspect-[4/3]"
-            >
-              <img
-                :src="item.image"
-                :alt="item.title"
-                class="object-center object-cover aspect-[4/3]"
-              />
-            </div>
-            <div class="flex justify-between">
-              <div class="pretitle-alt">{{ item.tags }}</div>
-            </div>
-            <div class="ex-link title-alt mt-3 mb-1">
-              <span>{{ item.title }}</span>
-              <Icon name="external" class="ex-icon" />
-            </div>
+      <Box v-for="item in list" :key="item.image" class="hover" audio>
+        <NuxtLink
+          to="/projects/1"
+          class="bg-gray-950 block shadow-lg mb-6 rounded-lg overflow-hidden cursor-pointer aspect-[4/3]"
+        >
+          <img
+            :src="item.image"
+            :alt="item.title"
+            class="object-center object-cover aspect-[4/3]"
+          />
+        </NuxtLink>
+        <div class="mb-4 flex justify-between items-center">
+          <div class="pretitle-alt">{{ item.tags }}</div>
+          <div class="pl-5 flex items-center link opacity-60">
+            <Icon name="heart" class="w-4 h-auto mr-2" />
+            <div class="font-head text-xs">255</div>
           </div>
         </div>
-      </template>
+        <NuxtLink to="/projects/1" class="link title-alt mt-3 mb-1">
+          <span>{{ item.title }}</span>
+          <Icon name="external" class="ex-icon" />
+        </NuxtLink>
+      </Box>
       <AudioHover class="mt-8 col-start-2 btn-alt blackhole">
         Показать ещё
       </AudioHover>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
   .bg-box {
     overflow: hidden;
   }
-  .ex-link {
-    cursor: pointer;
-    @apply transition-colors;
+  .pretitle-alt {
+    margin: 0;
+  }
+  .link {
     &:hover {
       @apply text-primary-600;
       .ex-icon {

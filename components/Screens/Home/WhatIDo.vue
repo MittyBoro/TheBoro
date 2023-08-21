@@ -34,7 +34,7 @@
 
     <div class="grid grid-cols-2 gap-x-8 gap-y-10">
       <template v-for="item in whatIDo" :key="item.icon">
-        <div class="bg-box">
+        <Box>
           <div class="flex mb-5 items-center">
             <div class="w-14 h-14 mr-5 shrink-0">
               <Icon :name="item.icon" class="fill-primary-700" />
@@ -44,7 +44,7 @@
           <div class="text-sm leading-6 text-gray-400">
             {{ item.description }}
           </div>
-        </div>
+        </Box>
       </template>
     </div>
   </div>
