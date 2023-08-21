@@ -6,7 +6,8 @@
 
 <template>
   <main>
-    <ScreensHome id="home" class="pb-16" />
-    <ScreensProjects id="projects" class="py-16" />
+    <ScreensHome id="home" />
+    <Delimiter />
+    <ScreensProjects id="projects" />
   </main>
 </template>

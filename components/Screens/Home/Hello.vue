@@ -20,37 +20,25 @@
     <div class="pretitle">Я здесь</div>
     <div class="flex mt-3">
       <AudioHover>
-        <div class="btn-mini btn-alt aspect-square mr-4">
+        <div class="btn-mini btn-wa-border btn-second aspect-square mr-4">
           <Icon name="ig" class="scale-75 svg" />
         </div>
       </AudioHover>
       <AudioHover>
-        <div class="btn-mini btn-alt aspect-square mr-4">
+        <div class="btn-mini btn-second aspect-square mr-4">
           <Icon name="tg" class="svg" />
         </div>
       </AudioHover>
       <AudioHover>
-        <div class="btn-mini btn-alt aspect-square mr-4">
+        <div class="btn-mini btn-second aspect-square mr-4">
           <Icon name="vk" class="svg" />
         </div>
       </AudioHover>
       <AudioHover class="ml-auto">
-        <NuxtLink
-          :to="{ hash: '#projects' }"
-          :external="true"
-          class="btn-mini btn"
-        >
+        <HashLink to="#projects" class="btn-mini btn">
           <span>Портфолио</span>
-        </NuxtLink>
+        </HashLink>
       </AudioHover>
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-  .btn-mini {
-    svg {
-      @apply w-auto h-auto fill-current;
-    }
-  }
-</style>

@@ -40,7 +40,7 @@
       <div class="title">Портфолио</div>
     </div>
     <div class="grid grid-cols-3 gap-x-8 gap-y-10">
-      <Box v-for="item in list" :key="item.image" class="hover" audio>
+      <Box v-for="item in list" :key="item.image" class="hover">
         <NuxtLink
           to="/projects/1"
           class="bg-gray-950 block shadow-lg mb-6 rounded-lg overflow-hidden cursor-pointer aspect-[4/3]"
@@ -63,17 +63,12 @@
           <Icon name="external" class="ex-icon" />
         </NuxtLink>
       </Box>
-      <AudioHover class="mt-8 col-start-2 btn-alt blackhole">
-        Показать ещё
-      </AudioHover>
+      <div class="mt-8 col-start-2 btn-second blackhole">Показать ещё</div>
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
-  .bg-box {
-    overflow: hidden;
-  }
   .pretitle-alt {
     margin: 0;
   }

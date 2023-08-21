@@ -10,21 +10,12 @@
 <template>
   <component :is="Popper" :content="props.title" arrow hover placement="top">
     <AudioHover>
-      <div class="btn-mini btn-alt btn-sq">
+      <div class="btn-third btn-mini aspect-square m-2">
         <Icon :name="props.name" />
       </div>
     </AudioHover>
   </component>
 </template>
-
-<style lang="scss" scoped>
-  .btn-sq {
-    @apply border-0 bg-gray-900 aspect-square m-2;
-    &:hover {
-      @apply shadow-lg shadow-gray-950;
-    }
-  }
-</style>
 
 <style lang="scss">
   :root {

@@ -6,8 +6,12 @@
       </div>
 
       <div class="col-span-4">
-        <ScreensHomeWhatIDo class="mb-24" />
-        <ScreensHomeStack class="mb-24" />
+        <ScreensHomeWhatIDo />
+        <Delimiter class="-my-10" full />
+
+        <ScreensHomeStack />
+        <Delimiter class="-my-10" full />
+
         <ScreensHomeMyWay />
       </div>
     </div>

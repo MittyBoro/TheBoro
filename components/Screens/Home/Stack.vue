@@ -149,7 +149,7 @@
     }
 
     &:hover {
-      :deep(.btn-sq:hover svg) {
+      :deep(.btn-second:hover svg) {
         filter: brightness(105%);
         @apply scale-110;
       }

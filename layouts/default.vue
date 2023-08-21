@@ -1,12 +1,12 @@
 <script setup>
+  const MAIN_OPACITY = 0.6
+  const DISTANCE_TO_OBJECTS = 200
+
   const lightStyle = reactive({
     top: 0,
     left: 0,
-    opacity: 0,
+    opacity: MAIN_OPACITY,
   })
-
-  const MAIN_OPACITY = 0.6
-  const DISTANCE_TO_OBJECTS = 200
 
   const handleMouseMove = (event) => {
     lightStyle.top = event.clientY + 'px'
@@ -38,13 +38,23 @@
       }
     })
   }
+
+  onMounted(() => {
+    document.addEventListener('mousemove', handleMouseMove)
+  })
+  onUnmounted(() => {
+    document.removeEventListener('mousemove', handleMouseMove)
+  })
 </script>
 
 <template>
-  <div class="wrapper" @mousemove="handleMouseMove">
-    <!-- <div class="mouse-light" :style="lightStyle"></div> -->
+  <div class="wrapper">
+    <ClientOnly>
+      <div class="mouse-light" :style="lightStyle"></div>
+    </ClientOnly>
     <div class="relative pt-16">
       <slot></slot>
+      <Delimiter />
       <ScreensFooter class="relative" />
     </div>
   </div>
@@ -52,7 +62,7 @@
 
 <style lang="scss" scoped>
   .wrapper {
-    @apply relative  min-h-screen;
+    @apply relative min-h-screen;
     @apply bg-gradient-to-br from-gray-950 to-gray-900;
     @apply text-white text-opacity-80;
     &::before {
