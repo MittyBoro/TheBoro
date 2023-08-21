@@ -62,9 +62,9 @@
           </div>
         </div>
       </template>
-      <ElAudioHover class="mt-8 col-start-2 btn-alt blackhole">
+      <AudioHover class="mt-8 col-start-2 btn-alt blackhole">
         Показать ещё
-      </ElAudioHover>
+      </AudioHover>
     </div>
   </div>
 </template>

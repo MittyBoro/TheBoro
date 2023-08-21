@@ -19,22 +19,22 @@
 
     <div class="pretitle">Я здесь</div>
     <div class="flex mt-3">
-      <ElAudioHover>
+      <AudioHover>
         <div class="btn-mini btn-alt aspect-square mr-4">
           <Icon name="ig" class="scale-75" />
         </div>
-      </ElAudioHover>
-      <ElAudioHover>
+      </AudioHover>
+      <AudioHover>
         <div class="btn-mini btn-alt aspect-square mr-4">
           <Icon name="tg" />
         </div>
-      </ElAudioHover>
-      <ElAudioHover>
+      </AudioHover>
+      <AudioHover>
         <div class="btn-mini btn-alt aspect-square mr-4">
           <Icon name="vk" />
         </div>
-      </ElAudioHover>
-      <ElAudioHover class="ml-auto">
+      </AudioHover>
+      <AudioHover class="ml-auto">
         <NuxtLink
           :to="{ hash: '#projects' }"
           :external="true"
@@ -42,7 +42,7 @@
         >
           <span>Портфолио</span>
         </NuxtLink>
-      </ElAudioHover>
+      </AudioHover>
     </div>
   </div>
 </template>

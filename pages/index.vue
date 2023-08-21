@@ -10,4 +10,5 @@
 <template>
   <HomeScreen class="pb-16" />
   <ProjectsList class="py-16" />
+  <FooterBox />
 </template>

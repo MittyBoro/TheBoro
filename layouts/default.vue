@@ -40,7 +40,7 @@
 
 <template>
   <div
-    class="relative bg-gradient-to-br from-gray-950 to-gray-900 text-white text-opacity-80"
+    class="wrapper relative bg-gradient-to-br from-gray-950 to-gray-900 text-white text-opacity-80"
     @mousemove="handleMouseMove"
   >
     <div
@@ -54,6 +54,23 @@
 </template>
 
 <style lang="scss" scoped>
+  .wrapper {
+    &::before {
+      --bg-start: theme(colors.primary.700);
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: 300px;
+      background-image: radial-gradient(
+        farthest-side at bottom,
+        var(--bg-start) 0%,
+        #0000
+      );
+      background-position: 50% 100%;
+      background-size: 150% auto;
+      opacity: 0.4;
+    }
+  }
   .mouse-light {
     position: fixed;
     width: 250px;

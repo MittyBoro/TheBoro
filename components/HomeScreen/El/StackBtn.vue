@@ -9,11 +9,11 @@
 
 <template>
   <component :is="Popper" :content="props.title" arrow hover placement="top">
-    <ElAudioHover>
+    <AudioHover>
       <div class="btn-mini btn-alt btn-sq">
         <Icon :name="props.name" />
       </div>
-    </ElAudioHover>
+    </AudioHover>
   </component>
 </template>
 
