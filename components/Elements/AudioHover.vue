@@ -1,19 +1,27 @@
 <script setup>
   const props = defineProps({
-    name: String,
-    title: String,
+    muted: Boolean,
   })
+  const audio = ref(null)
 
-  let audio
-  onMounted(async () => {
-    let audioSrc = (await import('~/assets/audios/1.mp3')).default
-    audio = new Audio(audioSrc)
-  })
+  const audioInit = async () => {
+    audio.value = new Audio()
+    audio.value.src = (await import('~/assets/audios/1.mp3')).default
+  }
 
-  onUnmounted(() => (audio = null))
+  if (!props.muted) {
+    onMounted(async () => {
+      document.addEventListener('click', audioInit, { once: true })
+    })
+
+    onUnmounted(() => {
+      document.removeEventListener('click', audioInit)
+      audio.value = null
+    })
+  }
 
   const playSound = () => {
-    audio.play()
+    audio.value?.play()
   }
 </script>
 <template>

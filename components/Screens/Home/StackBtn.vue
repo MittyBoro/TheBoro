@@ -9,14 +9,27 @@
 
 <template>
   <component :is="Popper" :content="props.title" arrow hover placement="top">
-    <AudioHover>
-      <div class="btn-third btn-mini aspect-square m-2">
-        <Icon :name="props.name" />
-      </div>
-    </AudioHover>
+    <Btn type="third" square class="m-2">
+      <Icon :name="props.name" />
+    </Btn>
   </component>
 </template>
 
+<style lang="scss" scoped>
+  :deep(.btn-third) {
+    @apply py-3;
+    svg {
+      filter: opacity(85%);
+      @apply transition-all;
+    }
+    &:hover {
+      svg {
+        filter: brightness(105%);
+        @apply scale-110;
+      }
+    }
+  }
+</style>
 <style lang="scss">
   :root {
     --popper-theme-background-color: theme(colors.gray.950);

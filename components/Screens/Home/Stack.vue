@@ -4,7 +4,7 @@
     <div class="title">Что я использую</div>
 
     <Box>
-      <div class="elements max-w-md">
+      <div class="elements max-w-lg">
         <div class="pretitle-alt mb-5">Код</div>
         <div class="flex flex-wrap -mx-2">
           <ScreensHomeStackBtn
@@ -137,22 +137,3 @@
     </Box>
   </div>
 </template>
-
-<style lang="scss" scoped>
-  .bg-box {
-    :deep(svg) {
-      filter: hue-rotate(40deg) sepia(100%) saturate(170%) hue-rotate(-40deg)
-        hue-rotate(hue(#bd183f));
-      filter: saturate(85%) brightness(85%);
-      transition: filter 0.3s, transform 0.3s;
-      @apply scale-90;
-    }
-
-    &:hover {
-      :deep(.btn-second:hover svg) {
-        filter: brightness(105%);
-        @apply scale-110;
-      }
-    }
-  }
-</style>

@@ -6,10 +6,10 @@
   }
 </script>
 <template>
-  <section class="project-screen container">
-    <Box>
+  <section class="project-screen container py-18">
+    <Box class="rounded-tl-3xl">
       <div class="grid grid-cols-9 gap-10">
-        <div @click="goToPrev()" class="btn-close btn-second btn-mini"></div>
+        <Btn @click="goToPrev()" type="third" mini square class="btn-close" />
 
         <div class="col-span-4 sticky top-10">
           <div
@@ -35,24 +35,18 @@
           </div>
 
           <div class="flex mt-auto pt-10">
-            <div class="btn-second btn-mini mr-4">
-              <span class="flex">
-                <Icon name="heart" class="w-4 h-auto mr-2" />
-                <div>247</div>
-              </span>
-            </div>
-            <div class="btn-second btn-mini mr-4">
-              <span class="flex">
-                <Icon name="github" class="w-4 h-auto mr-2" />
-                Исходный код
-              </span>
-            </div>
-            <div class="btn-second btn-mini ml-auto">
-              <span class="flex">
-                Открыть сайт
-                <Icon name="external" class="w-4 h-auto ml-2" />
-              </span>
-            </div>
+            <Btn type="third" mini class="mr-5">
+              <Icon name="heart" class="w-4 h-4 mr-2" />
+              <div>247</div>
+            </Btn>
+            <Btn type="third" mini class="mr-5">
+              <Icon name="github" class="w-4 h-4 mr-2" />
+              <span>Исходный код</span>
+            </Btn>
+            <Btn mini class="ml-auto">
+              Открыть сайт
+              <Icon name="external" class="w-4 h-auto ml-2" />
+            </Btn>
           </div>
         </div>
       </div>
@@ -63,12 +57,14 @@
 <style lang="scss" scoped>
   .btn-close {
     position: absolute;
-    top: -5px;
-    right: -5px;
-    @apply aspect-square rounded-full;
-    &::before {
+    top: 0;
+    right: 0;
+    @apply text-2xl rounded-2xl text-center;
+    &::after {
       content: '×';
-      @apply text-2xl;
+    }
+    :deep(.btn-inner) {
+      display: none;
     }
   }
 </style>

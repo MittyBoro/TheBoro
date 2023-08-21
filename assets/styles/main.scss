@@ -4,6 +4,13 @@
 
 :root {
   --scroll-behavior: smooth;
+  --btn-gradietnt: linear-gradient(
+    to bottom right,
+    theme(colors.primary.600/0.75),
+    theme(colors.primary.800/0.75),
+    theme(colors.gray.900/0.75),
+    theme(colors.gray.950/0.75)
+  );
 }
 
 /* ========= General ========= */
@@ -48,54 +55,4 @@ html {
 }
 .container {
   @apply max-w-screen-xl;
-}
-.btn,
-.btn-second,
-.btn-third {
-  @apply relative px-8 py-6 rounded-xl;
-  @apply font-head text-center uppercase tracking-widest text-xs;
-  @apply cursor-pointer transition-all duration-300 overflow-hidden;
-  &:hover {
-    @apply -translate-y-0.5;
-  }
-}
-
-.btn {
-  background-position: 100% 50%;
-  background-size: 200%;
-
-  @apply bg-gradient-to-r from-primary-600 via-primary-600 to-primary-800 text-white;
-  @apply shadow-lg;
-
-  &:hover {
-    background-position: 0% 50%;
-    @apply shadow-xl shadow-primary-900;
-  }
-}
-
-.btn-second {
-  @apply text-gray-300 border-gray-800 bg-gray-950 bg-opacity-50 border-4;
-  @apply shadow-lg shadow-gray-950;
-  &:hover {
-    @apply bg-gray-100 border-gray-100  text-primary-600;
-    @apply shadow-xl shadow-gray-500;
-  }
-}
-
-.btn-third {
-  @apply text-gray-300 bg-gray-900 bg-opacity-50;
-  @apply shadow-lg shadow-gray-950;
-  &:hover {
-    @apply shadow-xl shadow-gray-950 bg-opacity-70 text-white;
-  }
-}
-
-.btn-mini {
-  @apply rounded h-12 p-3 flex justify-center items-center transition-all;
-  .svg {
-    @apply w-auto h-auto fill-current;
-  }
-  span {
-    @apply px-4;
-  }
 }

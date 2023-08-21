@@ -102,18 +102,10 @@
 
 <style lang="scss" scoped>
   .avatar {
-    background-image: var(--gradietnt);
+    background-image: var(--btn-gradietnt);
     background-position: 100% 100%;
     background-size: 250% 250%;
     animation: vibration 0.7s infinite;
-
-    --gradietnt: linear-gradient(
-      to bottom right,
-      theme(colors.primary.600/0.75),
-      theme(colors.primary.800/0.75),
-      theme(colors.gray.900/0.75),
-      theme(colors.gray.950/0.75)
-    );
 
     @apply p-2 relative rounded-full;
     @apply shadow-2xl shadow-black;

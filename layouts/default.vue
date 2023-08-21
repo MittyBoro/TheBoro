@@ -52,7 +52,7 @@
     <ClientOnly>
       <div class="mouse-light" :style="lightStyle"></div>
     </ClientOnly>
-    <div class="relative pt-16">
+    <div class="relative pt-10">
       <slot></slot>
       <Delimiter />
       <ScreensFooter class="relative" />

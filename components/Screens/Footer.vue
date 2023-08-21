@@ -1,21 +1,15 @@
 <template>
   <footer class="container pb-10">
     <div class="flex justify-center mb-10">
-      <AudioHover>
-        <div class="btn-third btn-mini aspect-square mx-2">
-          <Icon name="ig" class="scale-75 svg" />
-        </div>
-      </AudioHover>
-      <AudioHover>
-        <div class="btn-third btn-mini aspect-square mx-2">
-          <Icon name="tg" class="svg" />
-        </div>
-      </AudioHover>
-      <AudioHover>
-        <div class="btn-third btn-mini aspect-square mx-2">
-          <Icon name="vk" class="svg" />
-        </div>
-      </AudioHover>
+      <Btn type="third" mini square class="mx-2">
+        <Icon name="ig" class="scale-[.8]" />
+      </Btn>
+      <Btn type="third" mini square class="mx-2">
+        <Icon name="tg" />
+      </Btn>
+      <Btn type="third" mini square class="mx-2">
+        <Icon name="vk" />
+      </Btn>
     </div>
 
     <div class="text-center text-xs">
