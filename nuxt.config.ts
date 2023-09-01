@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     { path: '~/components/Elements', pathPrefix: false },
     '~/components',
   ],
+  modules: ['@nuxtjs/strapi'],
   postcss: {
     plugins: {
       'postcss-import': {},
@@ -24,7 +25,20 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  runtimeConfig: {
+    public: {
+      strapiUri: process.env.STRAPI_URL,
+      strapiToken: process.env.STRAPI_TOKEN,
+    },
+  },
   // ssr: false,
+  strapi: {
+    url: process.env.STRAPI_URL,
+    prefix: '/api',
+    version: 'v4',
+    cookie: {},
+    cookieName: 'strapi_jwt',
+  },
 
   vite: {
     plugins: [svgLoader()],
