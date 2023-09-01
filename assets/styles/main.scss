@@ -56,3 +56,10 @@ html {
 .container {
   @apply max-w-screen-xl;
 }
+
+.styled-text {
+  @apply text-sm leading-normal;
+  p:not(:last-child) {
+    @apply mb-3;
+  }
+}

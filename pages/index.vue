@@ -9,5 +9,7 @@
     <ScreensHome id="home" />
     <Delimiter />
     <ScreensProjects id="projects" />
+    <Delimiter />
+    <ScreensGithub id="src" />
   </main>
 </template>

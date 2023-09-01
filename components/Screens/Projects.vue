@@ -48,7 +48,7 @@
           <img
             :src="item.image"
             :alt="item.title"
-            class="object-center object-cover aspect-[4/3]"
+            class="object-cover object-center w-full h-full"
           />
         </NuxtLink>
         <div class="mb-4 flex justify-between items-center">
@@ -63,7 +63,9 @@
           <Icon name="external" class="ex-icon" />
         </NuxtLink>
       </Box>
-      <div class="mt-8 col-start-2 btn-second blackhole">Показать ещё</div>
+      <div class="mt-8 col-start-2 flex justify-center">
+        <Btn type="second">Показать ещё</Btn>
+      </div>
     </div>
   </section>
 </template>

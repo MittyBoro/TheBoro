@@ -54,8 +54,7 @@
       <div class="w-2 rounded-lg bg-gray-950 shadow-xl shadow-gray-800"></div>
       <div class="ml-9 grid gap-10 w-full">
         <Box v-for="item in myWay" :key="item.title">
-          <div class="title-alt max-w-lg">{{ item.title }}</div>
-          <div class="date mt-3 mb-5">
+          <div class="date mb-5">
             {{ item.date }}
           </div>
           <div
@@ -73,17 +72,17 @@
     overflow: visible;
     &::before {
       content: '';
-      @apply absolute top-10 left-0 h-2 w-10 bg-gray-950 -translate-x-full;
+      @apply absolute top-9 left-0 h-2 w-10 bg-gray-950 -translate-x-full;
     }
     &::after {
       content: '';
 
-      @apply absolute top-10 -left-16 ml-2 -mt-3  w-8 h-8;
+      @apply absolute top-9 -left-16 ml-2 -mt-3  w-8 h-8;
       @apply rounded-full bg-gray-900 border-8 border-gray-950;
       @apply transition-colors duration-300 scale-75;
     }
     .date {
-      @apply text-xs text-gray-600 transition-colors;
+      @apply text-xs text-white font-head transition-colors;
     }
     &:hover {
       &::after {

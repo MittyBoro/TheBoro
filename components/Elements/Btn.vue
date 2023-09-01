@@ -48,18 +48,15 @@
     @apply cursor-pointer transition-all duration-300;
     &:hover {
       @apply -translate-y-0.5;
-      .btn-inner {
-        @apply scale-105;
+      svg {
+        @apply scale-110;
       }
     }
     &::before {
       @apply rounded-2xl;
     }
-    .btn-inner {
-      @apply transition-transform;
-    }
     svg {
-      @apply flex-shrink-0 w-auto h-auto fill-current max-w-full max-h-full;
+      @apply transition-transform flex-shrink-0 w-auto h-auto fill-current max-w-full max-h-full;
     }
   }
 

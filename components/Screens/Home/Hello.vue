@@ -27,6 +27,9 @@
       <Btn type="second" mini square class="mr-5">
         <Icon name="vk" />
       </Btn>
+      <Btn type="second" mini square class="mr-5">
+        <Icon name="github" />
+      </Btn>
       <HashLink to="#projects" class="ml-auto">
         <Btn mini class="mr-5">Портфолио</Btn>
       </HashLink>
