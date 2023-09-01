@@ -2,28 +2,30 @@ export default function () {
   const strapiToken = useRuntimeConfig().public.strapiToken
   const client = useStrapiClient()
 
-  const get = async (method) => {
-    const query = objectToQueryString({
+  const get = async (method, queryData = {}) => {
+    const queryStr = objectToQueryString({
+      populate: ['seo'],
       locale: ['ru'],
+      ...queryData,
     })
 
-    const result = await client(method + '?' + query, {
+    const result = await client(method + '?' + queryStr, {
       headers: {
         Authorization: strapiToken,
       },
     })
 
-    return result?.data
+    return result.data
   }
 
-  const find = async (method) => {
-    const result = await get(method)
+  const find = async (method, query = {}) => {
+    const result = await get(method, query)
     return result
   }
 
-  const findOne = async (method) => {
-    const result = await get(method)
-    return result
+  const findOne = async (method, query = {}) => {
+    const result = await get(method, query)
+    return result.attributes
   }
 
   return { find, findOne }

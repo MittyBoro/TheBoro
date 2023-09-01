@@ -2,7 +2,6 @@
   const DISTANCE_TO_OBJECT = 200
 
   const avatarDiv = ref(null)
-  const audio = ref(null)
 
   const imgStyle = reactive({
     transform: '',
@@ -46,49 +45,22 @@
     let bgP = getValues(100, 0, event)
     avatarStyle.backgroundPosition = `${bgP}% ${bgP}%`
 
-    if (audio.value) {
-      if (getDistanceToElement(event, avatarDiv.value) < DISTANCE_TO_OBJECT) {
-        // вибрация фото
-        avatarStyle.animationPlayState = 'running'
-        let shift = getValues(0, 3, event).toFixed(0) + 'px'
-        document.documentElement.style.setProperty('--animation-move', shift)
-
-        // громкость музыки
-        audio.value.volume = getValues(0, 0.3, event).toFixed(3)
-      } else {
-        avatarStyle.animationPlayState = 'paused'
-      }
+    if (getDistanceToElement(event, avatarDiv.value) < DISTANCE_TO_OBJECT) {
+      // вибрация фото
+      avatarStyle.animationPlayState = 'running'
+      let shift = getValues(0, 3, event).toFixed(0) + 'px'
+      document.documentElement.style.setProperty('--animation-move', shift)
+    } else {
+      avatarStyle.animationPlayState = 'paused'
     }
   }
 
-  const muteAudio = () => {
-    if (audio.value) audio.value.volume = 0
-  }
-
-  const playSound = async () => {
-    audio.value = new Audio()
-    audio.value.src = (await import('~/assets/audios/2.mp3')).default
-
-    audio.value.play()
-    audio.value.volume = 0
-    audio.value.playbackRate = 0.7
-
-    audio.value.addEventListener('ended', () => {
-      audio.value.currentTime = 0
-      audio.value.play()
-    })
-  }
-
   onMounted(() => {
-    window.addEventListener('mouseout', muteAudio)
     document.addEventListener('mousemove', handleMouseMove)
-    document.addEventListener('click', playSound, { once: true })
   })
 
   onUnmounted(() => {
-    window.removeEventListener('mouseout', muteAudio)
     document.removeEventListener('mousemove', handleMouseMove)
-    document.removeEventListener('click', playSound)
   })
 </script>
 

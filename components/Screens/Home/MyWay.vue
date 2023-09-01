@@ -1,4 +1,7 @@
 <script setup>
+  const resume = await useApi().find('resumes')
+  console.log('resume', resume)
+
   const myWay = [
     {
       title: 'Создаю первый сайт',
@@ -53,13 +56,13 @@
     <div class="flex">
       <div class="w-2 rounded-lg bg-gray-950 shadow-xl shadow-gray-800"></div>
       <div class="ml-9 grid gap-10 w-full">
-        <Box v-for="item in myWay" :key="item.title">
+        <Box v-for="item in resume" :key="item.id">
           <div class="date mb-5">
-            {{ item.date }}
+            {{ item.attributes.period }}
           </div>
           <div
             class="text-sm leading-6 text-gray-400 max-w-lg"
-            v-html="item.description"
+            v-html="item.attributes.text"
           ></div>
         </Box>
       </div>

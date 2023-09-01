@@ -1,23 +1,15 @@
-<script setup></script>
+<script setup>
+  const { aboutText } = defineProps({
+    aboutText: String,
+  })
+</script>
 
 <template>
   <section class="about-screen">
     <div class="pretitle">несколько слов</div>
     <div class="title">Обо мне</div>
     <Box>
-      <div class="styled-text max-w-lg">
-        <p>Разработчик с многолетним опытом работы в фрилансе.</p>
-        <p>
-          Разрабатываю веб-приложения с использованием современных технологий.
-        </p>
-        <p>В настоящий момент с бо’льшим энтузиазмом изучаю front-end</p>
-        <p>Открыт к предложениям с релокацией в другую страну</p>
-        <p>
-          <b>Хобби:</b>
-          фотографирую, катаюсь на велосипеде, смотрю кино, слушаю множество
-          жанров музыки, читаю книги, играю на PC
-        </p>
-      </div>
+      <div class="styled-text max-w-lg" v-html="aboutText"></div>
     </Box>
   </section>
 </template>
