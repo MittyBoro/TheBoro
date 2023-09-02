@@ -4,18 +4,23 @@ export default function () {
 
   const get = async (method, queryData = {}) => {
     const queryStr = objectToQueryString({
-      populate: ['seo'],
       locale: ['ru'],
       ...queryData,
     })
 
-    const result = await client(method + '?' + queryStr, {
-      headers: {
-        Authorization: strapiToken,
-      },
-    })
-
-    return result.data
+    try {
+      const { data } = await client(method + '?' + queryStr, {
+        headers: {
+          Authorization: strapiToken,
+        },
+      })
+      return data
+    } catch (error) {
+      throw createError({
+        statusCode: error.error.status,
+        statusMessage: error.error.message,
+      })
+    }
   }
 
   const find = async (method, query = {}) => {

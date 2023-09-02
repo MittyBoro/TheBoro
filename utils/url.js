@@ -11,7 +11,7 @@ function objectToQueryString(obj, parentKey = null) {
         return objectToQueryString(value, key)
       }
 
-      return `${key}=${encodeURIComponent(value)}`
+      return `${key}=${value}`
     })
     .join('&')
 }

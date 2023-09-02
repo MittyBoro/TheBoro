@@ -27,7 +27,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      strapiUri: process.env.STRAPI_URL,
+      strapiUrl: process.env.STRAPI_URL,
       strapiToken: process.env.STRAPI_TOKEN,
     },
   },

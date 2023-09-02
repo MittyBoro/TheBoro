@@ -12,9 +12,9 @@
       </div>
 
       <div class="col-span-4">
-        <ScreensHomeAbout :aboutText="pageData.aboutText" />
-        <Delimiter class="-my-10" full />
         <ScreensHomeMyWay />
+        <Delimiter class="-my-10" full />
+        <ScreensHomeAbout :aboutText="pageData.aboutText" />
         <Delimiter class="-my-10" full />
         <ScreensHomeStack />
       </div>

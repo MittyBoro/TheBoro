@@ -9,7 +9,7 @@
     <ScreensHomeAvatar class="mb-10" />
     <div class="font-head mb-6">
       <div class="text-3xl drop-shadow-xl">
-        <span v-html="pageData.title"></span>
+        <span class="my-title" v-html="pageData.title"></span>
         <ScreensHomeTyping class="text-white text-opacity-50" />
       </div>
     </div>
@@ -37,3 +37,9 @@
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  .my-title:deep(b) {
+    @apply text-primary-600;
+  }
+</style>

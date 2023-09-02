@@ -65,6 +65,7 @@
     @apply relative min-h-screen;
     @apply bg-gradient-to-br from-gray-950 to-gray-900;
     @apply text-white text-opacity-80;
+    overflow-x: clip;
     &::before {
       --bg-start: theme(colors.primary.700);
       content: '';

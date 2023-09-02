@@ -1,5 +1,5 @@
 <script setup>
-  const pageData = await useApi().findOne('home-page')
+  const pageData = await useApi().findOne('home-page', { populate: ['seo'] })
 
   useSeoMeta({
     title: pageData.seo.metaTitle,

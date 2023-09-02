@@ -56,7 +56,7 @@
       @apply rounded-2xl;
     }
     svg {
-      @apply transition-transform flex-shrink-0 w-auto h-auto fill-current max-w-full max-h-full;
+      @apply transition flex-shrink-0 w-auto h-auto fill-current max-w-full max-h-full;
     }
   }
 
