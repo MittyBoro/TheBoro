@@ -4,15 +4,21 @@
     fields: ['title', 'likes'],
     sort: ['rank:asc'],
   })
+
+  const { pageId } = defineProps({
+    pageId: Number,
+  })
+
+  const similarProjects = projects.filter((item) => item.id !== pageId)
 </script>
 
 <template>
   <section class="projects-screen container">
     <div class="text-center">
       <div class="pretitle">отборные шедевры</div>
-      <div class="title">Портфолио</div>
+      <div class="title">Другие проекты</div>
     </div>
 
-    <ScreensProjectsSwiper :projects="projects" />
+    <ScreensProjectsSwiper :projects="similarProjects" />
   </section>
 </template>

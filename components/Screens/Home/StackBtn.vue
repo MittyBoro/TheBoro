@@ -9,7 +9,7 @@
 
 <template>
   <component :is="Popper" :content="props.title" arrow hover placement="top">
-    <Btn type="third" square class="m-2">
+    <Btn third square class="m-2">
       <Icon :name="props.name" />
     </Btn>
   </component>

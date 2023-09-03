@@ -4,6 +4,7 @@
 
 :root {
   --scroll-behavior: smooth;
+  --loading-color: theme(colors.primary.600);
   --btn-gradietnt: linear-gradient(
     to bottom right,
     theme(colors.primary.600/0.75),
@@ -57,9 +58,6 @@ html {
   @apply max-w-screen-xl;
 }
 
-.styled-text {
-  @apply text-sm leading-normal;
-  p:not(:last-child) {
-    @apply mb-3;
-  }
+.prose {
+  @apply prose-gray dark:prose-invert;
 }

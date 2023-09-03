@@ -1,18 +1,18 @@
 <script setup>
-  const pageData = await useApi().findOne('home-page', { populate: ['seo'] })
+  const page = await useApi().findOne('home-page', { populate: ['seo'] })
 
   useSeoMeta({
-    title: pageData.seo.metaTitle,
-    ogTitle: pageData.seo.metaTitle,
-    description: pageData.seo.metaDescription,
-    ogDescription: pageData.seo.metaDescription,
+    title: page.data.seo.metaTitle,
+    ogTitle: page.data.seo.metaTitle,
+    description: page.data.seo.metaDescription,
+    ogDescription: page.data.seo.metaDescription,
     ogImage: 'https://example.com/image.png',
   })
 </script>
 
 <template>
   <main>
-    <ScreensHome :pageData="pageData" id="home" />
+    <ScreensHome :pageData="page.data" id="home" />
     <Delimiter />
     <ScreensProjects id="projects" />
     <Delimiter />

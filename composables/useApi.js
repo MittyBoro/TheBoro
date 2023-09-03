@@ -29,8 +29,11 @@ export default function () {
   }
 
   const findOne = async (method, query = {}) => {
-    const result = await get(method, query)
-    return result.attributes
+    const result = await find(method, query)
+    return {
+      data: result.attributes,
+      id: result.id,
+    }
   }
 
   return { find, findOne }

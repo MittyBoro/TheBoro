@@ -3,7 +3,7 @@
     <div class="pretitle">Stack</div>
     <div class="title">Что я использую</div>
 
-    <Box>
+    <Card>
       <div class="elements max-w-lg">
         <div class="pretitle-alt mb-5">Код</div>
         <div class="flex flex-wrap -mx-2">
@@ -134,6 +134,6 @@
           />
         </div>
       </div>
-    </Box>
+    </Card>
   </div>
 </template>

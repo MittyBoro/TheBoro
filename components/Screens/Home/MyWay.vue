@@ -11,23 +11,23 @@
 
     <div class="flex">
       <div class="w-2 rounded-lg bg-gray-950 shadow-xl shadow-gray-800"></div>
-      <div class="ml-9 grid gap-10 w-full">
-        <Box v-for="item in resume" :key="item.id">
+      <div class="ml-9 grid gap-6 w-full">
+        <Card v-for="item in resume" :key="item.id">
           <div class="date mb-5">
             {{ item.attributes.period }}
           </div>
           <div
-            class="text-sm leading-6 text-gray-400 max-w-lg"
+            class="text-sm leading-6 text-gray-400 max-w-lg prose"
             v-html="item.attributes.text"
           ></div>
-        </Box>
+        </Card>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .bg-box {
+  .card {
     overflow: visible;
     &::before {
       content: '';
@@ -41,7 +41,7 @@
       @apply transition-colors duration-300 scale-75;
     }
     .date {
-      @apply text-xs text-white font-head transition-colors;
+      @apply text-xs text-white text-opacity-70 font-head transition-colors;
     }
     &:hover {
       &::after {

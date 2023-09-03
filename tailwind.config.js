@@ -31,4 +31,5 @@ module.exports = {
       head: ['Russo One', 'Arial Black', 'system-ui'],
     },
   },
+  plugins: [require('@tailwindcss/typography')],
 }

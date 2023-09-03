@@ -6,7 +6,7 @@
       <div class="pretitle">Source</div>
       <div class="title">Исходный код</div>
     </div>
-    <div class="mx-auto max-w-xl styled-text text-center">
+    <div class="mx-auto max-w-xl prose text-center">
       <p>
         Исторически сложилось, что у меня не так много открытых проектов на
         Github. Поэтому данный сайт я разместил в открытом репозитории, чтобы
@@ -14,7 +14,7 @@
       </p>
     </div>
     <div class="flex mt-10 justify-center">
-      <Btn type="second" class="blackhole">
+      <Btn second class="blackhole">
         <Icon name="github" class="mr-3" />
         theboro src
       </Btn>

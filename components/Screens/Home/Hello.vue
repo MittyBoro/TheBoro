@@ -19,16 +19,16 @@
     ></div>
 
     <div class="flex">
-      <Btn type="second" mini square class="mr-5">
+      <Btn second mini square class="mr-5">
         <Icon name="ig" class="scale-[.8]" />
       </Btn>
-      <Btn type="second" mini square class="mr-5">
+      <Btn second mini square class="mr-5">
         <Icon name="tg" />
       </Btn>
-      <Btn type="second" mini square class="mr-5">
+      <Btn second mini square class="mr-5">
         <Icon name="vk" />
       </Btn>
-      <Btn type="second" mini square class="mr-5">
+      <Btn second mini square class="mr-5">
         <Icon name="github" />
       </Btn>
       <HashLink to="#projects" class="ml-auto">

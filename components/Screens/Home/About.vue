@@ -8,9 +8,9 @@
   <section class="about-screen">
     <div class="pretitle">несколько слов</div>
     <div class="title">Обо мне</div>
-    <Box>
-      <div class="styled-text max-w-lg" v-html="aboutText"></div>
-    </Box>
+    <Card>
+      <div class="prose-sm max-w-lg" v-html="aboutText"></div>
+    </Card>
   </section>
 </template>
 

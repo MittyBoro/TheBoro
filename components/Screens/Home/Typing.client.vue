@@ -56,6 +56,9 @@
 
 <style lang="scss" scoped>
   .typing {
+    &::before {
+      content: ' ';
+    }
     &::after {
       content: '|';
       animation: pulse 0.7s linear infinite;

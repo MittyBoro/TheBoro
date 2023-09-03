@@ -1,5 +1,5 @@
-export default function (src) {
+export default function () {
   const strapiUrl = useRuntimeConfig().public.strapiUrl
 
-  return strapiUrl + src
+  return strapiUrl
 }

@@ -1,5 +1,5 @@
 <script setup>
-  const MAIN_OPACITY = 0.6
+  const MAIN_OPACITY = 0.8
   const DISTANCE_TO_OBJECTS = 200
 
   const lightStyle = reactive({

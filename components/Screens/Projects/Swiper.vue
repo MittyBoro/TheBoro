@@ -6,8 +6,10 @@
   const { projects } = defineProps({
     projects: Array,
   })
+
+  const $swiper = ref(null)
   const onSwiper = (swiper) => {
-    console.log(swiper)
+    $swiper.value = swiper
   }
   const modules = [Navigation]
 </script>
@@ -19,23 +21,25 @@
       :slides-per-view="3"
       :space-between="30"
       @swiper="onSwiper"
-      :navigation="{
-        prevEl: '.sw_prev',
-        nextEl: '.sw_next',
-      }"
       rewind
       watchSlidesProgress
     >
       <swiper-slide v-for="item in projects" :key="item.id">
-        <ScreensProjectsBox :item="item" />
+        <ScreensProjectsCard :item="item" />
       </swiper-slide>
     </swiper>
 
     <div class="mt-14 flex justify-center">
-      <Btn type="second" square mini class="-scale-x-100 mx-3 sw_prev">
+      <Btn
+        second
+        square
+        mini
+        class="-scale-x-100 mx-3 sw_prev"
+        @click="$swiper.slidePrev()"
+      >
         <Icon name="arrow" />
       </Btn>
-      <Btn type="second" square mini class="mx-3 sw_next">
+      <Btn second square mini class="mx-3 sw_next" @click="$swiper.slideNext()">
         <Icon name="arrow" />
       </Btn>
     </div>

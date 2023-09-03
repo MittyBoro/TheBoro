@@ -1,26 +1,16 @@
-<script setup>
-  const props = defineProps({
-    audio: {
-      type: Boolean,
-      default: false,
-    },
-  })
-</script>
+<script setup></script>
 
 <template>
-  <div class="bg-box">
-    <AudioHover v-if="props.audio">
-      <slot></slot>
-    </AudioHover>
-    <template v-else>
-      <slot></slot>
-    </template>
+  <div class="card">
+    <slot name="top"></slot>
+    <div class="relative p-8"><slot></slot></div>
+    <slot name="bottom"></slot>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .bg-box {
-    @apply relative p-8 rounded-2xl transition;
+  .card {
+    @apply relative rounded-2xl transition overflow-hidden;
     @apply bg-gradient-to-br from-gray-950 bg-gray-950 bg-opacity-40;
     @apply shadow-xl shadow-gray-950;
     &::after {

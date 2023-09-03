@@ -3,41 +3,39 @@
     item: Object,
   })
 
-  const imageUrl = (item) => {
-    return useSrc(item.attributes.thumb.data.attributes.formats.small.url)
-  }
+  const attr = item.attributes
 </script>
 
 <template>
-  <Box class="hover p-item">
+  <Card class="hover p-item">
     <NuxtLink
       :to="`/projects/${item.id}`"
       class="bg-gray-950 block shadow-lg mb-6 rounded-lg overflow-hidden cursor-pointer aspect-[16/10]"
     >
       <img
-        :src="imageUrl(item)"
-        :alt="item.attributes.title"
+        :src="useExtImg(attr.thumb, 'small')"
+        :alt="attr.title"
         class="object-cover object-center w-full h-full"
       />
     </NuxtLink>
     <div class="mb-7 flex justify-between items-center">
       <div class="pretitle-alt">
-        <span v-for="cat in item.attributes.categories.data" :key="cat.id">
-          {{ cat.attributes.name }}
+        <span v-for="cat in attr.categories.data" :key="cat.id">
+          {{ cat.attributes.title }}
         </span>
       </div>
       <div class="pl-5 flex items-center link opacity-60">
         <Icon name="heart" class="w-4 h-auto mr-2" />
         <div class="font-head text-xs">
-          {{ item.attributes.likes || 0 }}
+          {{ attr.likes || 0 }}
         </div>
       </div>
     </div>
     <NuxtLink :to="`/projects/${item.id}`" class="link title-alt my-auto pb-1">
-      <span>{{ item.attributes.title }}</span>
+      <span>{{ attr.title }}</span>
       <Icon name="external" class="ex-icon" />
     </NuxtLink>
-  </Box>
+  </Card>
 </template>
 
 <style lang="scss" scoped>

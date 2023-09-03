@@ -12,6 +12,7 @@ export default defineNuxtConfig({
       ],
     },
   },
+  devtools: true,
   css: ['~/assets/styles/main.scss'],
   components: [
     { path: '~/components/Elements', pathPrefix: false },
@@ -31,7 +32,7 @@ export default defineNuxtConfig({
       strapiToken: process.env.STRAPI_TOKEN,
     },
   },
-  // ssr: false,
+  ssr: true,
   strapi: {
     url: process.env.STRAPI_URL,
     prefix: '/api',
