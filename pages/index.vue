@@ -14,7 +14,7 @@
   <main>
     <ScreensHome :pageData="page.data" id="home" />
     <Delimiter />
-    <ScreensProjects id="projects" />
+    <ScreensProjects class="-mt-16 pt-16" id="projects" />
     <Delimiter />
     <ScreensGithub id="src" />
   </main>

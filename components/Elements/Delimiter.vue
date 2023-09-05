@@ -18,7 +18,7 @@
   .delimiter {
     &::before {
       content: '';
-      @apply block mx-auto max-w-3xl border-t-4 border-gray-950 border-opacity-50;
+      @apply block mx-auto max-w-2xl border-t-4 border-gray-950 border-opacity-50;
     }
   }
 </style>

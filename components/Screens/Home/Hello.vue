@@ -18,19 +18,11 @@
       v-text="pageData.description"
     ></div>
 
-    <div class="flex">
-      <Btn second mini square class="mr-5">
-        <Icon name="ig" class="scale-[.8]" />
-      </Btn>
-      <Btn second mini square class="mr-5">
-        <Icon name="tg" />
-      </Btn>
-      <Btn second mini square class="mr-5">
-        <Icon name="vk" />
-      </Btn>
-      <Btn second mini square class="mr-5">
-        <Icon name="github" />
-      </Btn>
+    <div class="flex gap-5">
+      <Btn icon="ig" third mini square />
+      <Btn icon="tg" third mini square />
+      <Btn icon="github" third mini square />
+      <Btn icon="vk" third mini square />
       <HashLink to="#projects" class="ml-auto">
         <Btn mini class="mr-5">Портфолио</Btn>
       </HashLink>

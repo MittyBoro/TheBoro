@@ -9,51 +9,48 @@
         <div class="flex flex-wrap -mx-2">
           <ScreensHomeStackBtn
             name="vue"
-            title="Фреймворк для создания пользовательских интерфейсов"
+            title="Vue.js — Фреймворк для создания пользовательских интерфейсов"
           />
           <ScreensHomeStackBtn
             name="nuxt"
-            title="Фреймворк для универсальных приложений на основе Vue.js"
+            title="Nuxt — Фреймворк для универсальных приложений на основе Vue.js"
           />
           <ScreensHomeStackBtn
             name="vite"
-            title="Быстрый инструмент для разработки современных веб-приложений"
+            title="Vite — инструмент для сборки веб-приложений"
           />
           <ScreensHomeStackBtn
             name="nodejs"
-            title="Среда выполнения JavaScript на сервере"
+            title="NodeJS — Среда выполнения JavaScript на сервере"
           />
           <ScreensHomeStackBtn
             name="npm"
-            title="Менеджер пакетов для зависимостей JavaScript"
+            title="NPM — Менеджер пакетов для зависимостей JavaScript"
           />
           <ScreensHomeStackBtn
             name="javascript"
-            title="Язык программирования для интерактивных веб-сайтов и приложений"
+            title="Javascript — язык программирования для интерактивных веб-сайтов и приложений"
           />
-          <ScreensHomeStackBtn
-            name="sass"
-            title="Препроцессор CSS с дополнительными функциями"
-          />
+          <ScreensHomeStackBtn name="sass" title="SASS — препроцессор CSS" />
           <ScreensHomeStackBtn
             name="laravel"
-            title="Фреймворк для веб-приложений на PHP"
+            title="Laravel — фреймворк для веб-приложений на PHP"
           />
           <ScreensHomeStackBtn
             name="php"
-            title="Скриптовый язык программирования для веб-разработки"
+            title="PHP — язык программирования для веб-разработки"
           />
           <ScreensHomeStackBtn
             name="mysql"
-            title="Система управления базами данных для хранения данных"
+            title="MySQL — система управления базами данных"
           />
           <ScreensHomeStackBtn
             name="composer"
-            title="Менеджер зависимостей для проектов на PHP"
+            title="Composer — менеджер зависимостей для проектов на PHP"
           />
           <ScreensHomeStackBtn
             name="git"
-            title="Система контроля версий для совместной разработки кода"
+            title="Git — система контроля версий для совместной разработки кода"
           />
         </div>
 
@@ -65,7 +62,7 @@
           />
           <ScreensHomeStackBtn
             name="figma"
-            title="Инструмент для дизайна и прототипирования"
+            title="Инструмент для дизайна и прототипирования Figma"
           />
           <ScreensHomeStackBtn
             name="chrome"
@@ -114,7 +111,7 @@
           />
           <ScreensHomeStackBtn
             name="chatgpt"
-            title="GPT модель для чатов и текстовых взаимодействий"
+            title="ChatGPT — автор описаний к этому блоку"
           />
           <ScreensHomeStackBtn
             name="github"
@@ -122,18 +119,24 @@
           />
           <ScreensHomeStackBtn
             name="stack-overflow"
-            title="Сайт для вопросов и ответов по программированию"
+            title="Stack Overflow — сайт для вопросов и ответов по программированию"
           />
           <ScreensHomeStackBtn
             name="youtube"
-            title="Платформа для загрузки и просмотра видео"
+            title="Платформа для загрузки и просмотра видео YouTube"
           />
           <ScreensHomeStackBtn
             name="reddit"
-            title="Социальный новостной сайт с обсуждениями"
+            title="Социальный новостной сайт с обсуждениями Reddit"
           />
         </div>
       </div>
     </Card>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  .card {
+    overflow: visible;
+  }
+</style>

@@ -10,11 +10,11 @@
       <p>
         Исторически сложилось, что у меня не так много открытых проектов на
         Github. Поэтому данный сайт я разместил в открытом репозитории, чтобы
-        любой желающий мог оценить качество кода
+        любой желающий мог его оценить
       </p>
     </div>
     <div class="flex mt-10 justify-center">
-      <Btn second class="blackhole">
+      <Btn second>
         <Icon name="github" class="mr-3" />
         theboro src
       </Btn>

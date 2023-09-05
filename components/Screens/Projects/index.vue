@@ -1,7 +1,7 @@
 <script setup>
   const projects = await useApi().find('projects', {
     populate: ['thumb', 'categories'],
-    fields: ['title', 'likes'],
+    fields: ['title', 'website', 'views'],
     sort: ['rank:asc'],
   })
 </script>

@@ -3,71 +3,76 @@
     project: Object,
   })
 
-  const goToPrev = () => {
-    useRouter().go(-1)
-  }
-
   const categoriesStr = computed(() => {
     const list = project.categories.data.map((item) =>
       item.attributes.title.trim()
     )
     return list.join(', ')
   })
-  const tags = computed(() => {
-    const list = project.tags.data.map((item) => item.attributes.title.trim())
-    return list
-  })
 </script>
 <template>
   <section class="project-screen container -mt-10">
     <Card>
       <template #top>
-        <ClientOnly>
-          <Btn @click="goToPrev()" third square class="btn-close" />
-        </ClientOnly>
-        <div class="relative pt-64">
-          <div class="actions-el">
-            <div class="container-md mt-auto">
-              <ScreensSingleProjectActions
-                class="justify-start"
-                :project="project"
-              />
-            </div>
+        <NuxtLink to="/" class="absolute top-0 right-0 bottom-0 z-30">
+          <div class="sticky top-0">
+            <Btn third mini square icon="close" class="btn-close"></Btn>
           </div>
-          <div class="mask-background pointer-events-none aspect-[16/9]">
-            <img
-              loading="lazy"
-              :src="useExtImg(project.thumb)"
-              class="mask-image object-cover object-top w-full h-full"
-              :alt="project.title"
-            />
-          </div>
-        </div>
+        </NuxtLink>
       </template>
       <template #default>
-        <div class="container-md mb-10">
+        <div class="mask-background pointer-events-none aspect-[16/9]">
+          <img
+            loading="lazy"
+            :src="useExtImg(project.thumb)"
+            class="mask-image object-cover object-top w-full h-full"
+            :alt="project.title"
+          />
+        </div>
+
+        <div class="container-md mt-64 relative">
           <div class="drop-shadow-sm">
-            <div class="pretitle pb-5">{{ categoriesStr }}</div>
-            <div class="title" v-html="project.title"></div>
+            <div class="flex pb-5">
+              <div class="pretitle flex text-white">
+                <NuxtLink to="/#projects" class="link">Проекты</NuxtLink>
+                <span class="px-3 opacity-30">/</span>
+                <span class="opacity-70">{{ categoriesStr }}</span>
+              </div>
+              <div class="ml-auto pl-5 flex items-center opacity-60">
+                <Icon name="eye" class="w-4 h-auto mr-2" />
+                <div class="font-head text-xs">
+                  {{ project.views || 0 }}
+                </div>
+              </div>
+            </div>
+            <div class="title"><h1 v-html="project.title"></h1></div>
           </div>
 
           <div
             class="mt-10 flex gap-3 flex-wrap"
-            v-if="project.tags.data.length"
+            v-if="project.tags.data?.length"
           >
             <Btn
-              v-for="item in tags"
+              v-for="item in project.tags.data"
               third
               nano
               class="pointer-events-none whitespace-nowrap btn-tag"
             >
-              <span>{{ item }}</span>
+              <span>{{ item.attributes.title.trim() }}</span>
             </Btn>
           </div>
 
-          <div class="prose py-10" v-html="project.description"></div>
-
-          <ScreensSingleProjectActions :project="project" />
+          <div class="prose pt-10" v-html="project.description"></div>
+        </div>
+      </template>
+      <template #bottom>
+        <div class="actions-el -mt-5">
+          <div class="container-md">
+            <ScreensSingleProjectActions
+              class="justify-start"
+              :project="project"
+            />
+          </div>
         </div>
       </template>
     </Card>
@@ -75,6 +80,12 @@
 </template>
 
 <style lang="scss" scoped>
+  .card {
+    @apply rounded-t-none;
+  }
+  .btn-close {
+    @apply rounded-none rounded-bl-xl bg-gray-950/30 shadow-xl;
+  }
   .container-md {
     @apply container max-w-3xl;
   }
@@ -89,19 +100,20 @@
     );
   }
   .actions-el {
-    @apply absolute flex items-center justify-center inset-0 z-10 -top-16 transition-all duration-500;
-    opacity: 0;
-    &:hover {
-      @apply translate-y-0 top-0;
-      opacity: 1;
-      & ~ div {
-        opacity: 0.2;
-        @apply blur-sm;
-      }
-    }
+    @apply sticky z-20 -bottom-5;
+    @apply pt-7 pb-10;
+    @apply bg-gradient-to-b  from-transparent via-gray-950/70 via-40% to-gray-950/90;
+    // &:hover {
+    //   @apply translate-y-0 top-0;
+    //   opacity: 1;
+    //   & ~ div {
+    //     opacity: 0.2;
+    //     @apply blur-sm;
+    //   }
+    // };;
   }
   .pretitle {
-    opacity: 0.7;
+    opacity: 1;
   }
   .pretitle,
   .title {
@@ -109,26 +121,5 @@
   }
   .mask-image {
     mask-image: linear-gradient(to bottom, #000e 0%, transparent 100%);
-  }
-  .btn-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    @apply text-2xl text-center bg-gray-700 bg-opacity-10 shadow-xl z-20;
-    border-radius: 0 0 0 1rem;
-    &:hover {
-      @apply bg-gray-700 bg-opacity-50;
-    }
-    &::after {
-      content: '×';
-      margin-left: 5px;
-    }
-    :deep(.btn-inner) {
-      display: none;
-    }
-  }
-
-  .card {
-    @apply rounded-t-none rounded-b-3xl;
   }
 </style>

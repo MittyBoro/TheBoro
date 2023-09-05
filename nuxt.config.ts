@@ -32,7 +32,7 @@ export default defineNuxtConfig({
       strapiToken: process.env.STRAPI_TOKEN,
     },
   },
-  ssr: true,
+  ssr: false,
   strapi: {
     url: process.env.STRAPI_URL,
     prefix: '/api',

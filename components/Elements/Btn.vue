@@ -8,11 +8,18 @@
     muted: Boolean,
     square: Boolean,
 
+    icon: {
+      type: String,
+      default: null,
+    },
+
     is: {
       type: String,
       default: 'div',
     },
   })
+
+  const component = props.is == 'link' ? resolveComponent('NuxtLink') : props.is
 
   const pX = computed(() => {
     if (props.square) return ''
@@ -40,11 +47,12 @@
 </script>
 
 <template>
-  <component :is="props.is" :class="className">
+  <component :is="component" :class="className">
     <AudioHover
-      class="btn-inner flex items-center justify-center w-full h-full"
+      class="btn-inner flex items-center justify-center w-full h-full whitespace-nowrap"
       :muted="muted"
     >
+      <Icon v-if="props.icon" :name="props.icon" />
       <slot></slot>
     </AudioHover>
   </component>
@@ -58,8 +66,11 @@
     @apply relative h-14 py-5 rounded-xl;
     @apply font-head text-center uppercase tracking-widest text-xs leading-none;
     @apply cursor-pointer transition-all duration-200;
+
+    @apply shadow-lg shadow-gray-950/50;
     &:hover {
       @apply -translate-y-0.5;
+      @apply shadow-xl shadow-gray-950/50;
       svg {
         @apply scale-110;
       }
@@ -84,8 +95,6 @@
     background-size: 200%;
 
     @apply bg-gradient-to-r from-primary-600 via-primary-600 to-primary-800 text-white text-opacity-80;
-    @apply shadow-lg;
-
     &:hover {
       background-position: 0% 50%;
       @apply shadow-xl shadow-primary-900 text-white;
@@ -94,7 +103,6 @@
 
   .btn-second {
     @apply text-gray-300 border-gray-800 bg-gray-950 bg-opacity-50;
-    @apply shadow-lg shadow-gray-950;
     &::before {
       content: '';
       position: absolute;
@@ -105,37 +113,31 @@
       mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
       mask-composite: destination-out;
       mask-composite: exclude;
-      transition: background-position 0.3s;
-      @apply border-4 border-transparent -inset-1;
+      transition: background-position 0.3s, inset 0.3s;
+      @apply border-4 border-transparent inset-0;
+      border-radius: inherit;
     }
     &:hover {
       @apply text-white;
-      @apply shadow-xl shadow-gray-950;
       &::before {
         background-position: 0% 0%;
+        @apply -inset-0.5;
       }
     }
   }
 
   .btn-third {
     @apply text-gray-300 bg-gray-900 bg-opacity-70;
-    @apply shadow-lg shadow-gray-950;
     &:hover {
-      @apply shadow-xl shadow-gray-950 bg-opacity-90 text-white;
+      @apply bg-opacity-90 text-white;
     }
   }
 
   .btn-mini {
-    @apply rounded h-11 py-3;
-    &::before {
-      @apply rounded-lg;
-    }
+    @apply rounded-lg h-11 py-3;
   }
 
   .btn-nano {
     @apply rounded h-7 py-2 text-[0.6rem];
-    &::before {
-      @apply rounded-md;
-    }
   }
 </style>

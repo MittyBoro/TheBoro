@@ -1,8 +1,24 @@
 <script setup>
-  const id = useRoute().params.slug
   const page = await useApi().findOne('projects/' + useRoute().params.slug, {
     populate: ['seo', 'thumb', 'categories', 'tags'],
     fields: ['title', 'description', 'likes', 'website', 'srcLink', 'views'],
+  })
+
+  const projects = await useApi().find('projects', {
+    populate: ['thumb', 'categories'],
+    fields: ['title', 'website', 'views'],
+    sort: ['rank:asc'],
+  })
+
+  const similarProjects = projects.filter((item) => item.id !== page.id)
+
+  const currentIndex = projects.findIndex((item) => item.id === page.id)
+  const prevIndex = currentIndex - 1
+  const nextIndex = currentIndex + 1
+
+  provide('siblings', {
+    prev: prevIndex >= 0 ? projects[prevIndex] : null,
+    next: nextIndex < projects.length ? projects[nextIndex] : null,
   })
 
   useSeoMeta({
@@ -18,6 +34,6 @@
   <main>
     <ScreensSingleProject :project="page.data" />
     <Delimiter />
-    <ScreensSingleProjectSimilar :pageId="page.id" />
+    <ScreensSingleProjectSimilar :similarProjects="similarProjects" />
   </main>
 </template>

@@ -18,8 +18,8 @@
   <div>
     <swiper
       :modules="modules"
-      :slides-per-view="3"
-      :space-between="30"
+      :slides-per-view="2"
+      :space-between="32"
       @swiper="onSwiper"
       rewind
       watchSlidesProgress
@@ -29,17 +29,16 @@
       </swiper-slide>
     </swiper>
 
-    <div class="mt-14 flex justify-center">
+    <div class="mt-14 flex gap-5 justify-center">
       <Btn
-        second
+        third
         square
-        mini
-        class="-scale-x-100 mx-3 sw_prev"
+        class="-scale-x-100 sw_prev"
         @click="$swiper.slidePrev()"
       >
         <Icon name="arrow" />
       </Btn>
-      <Btn second square mini class="mx-3 sw_next" @click="$swiper.slideNext()">
+      <Btn third square class="sw_next" @click="$swiper.slideNext()">
         <Icon name="arrow" />
       </Btn>
     </div>

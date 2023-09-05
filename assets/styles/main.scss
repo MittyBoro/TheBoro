@@ -41,18 +41,18 @@ html {
 }
 
 .pretitle {
-  letter-spacing: 0.5em;
+  letter-spacing: 0.45em;
   @apply mb-2 text-xs uppercase opacity-50;
 }
 .pretitle-alt {
   letter-spacing: 0.15em;
-  @apply mb-2 text-xs uppercase opacity-40;
+  @apply mb-2 text-xs uppercase;
 }
 .title {
-  @apply font-head text-4xl mb-8 tracking-widest;
+  @apply font-head text-4xl mb-10 tracking-widest;
 }
 .title-alt {
-  @apply font-head text-xl tracking-widest;
+  @apply font-head text-2xl tracking-widest leading-snug;
 }
 .container {
   @apply max-w-screen-xl;
