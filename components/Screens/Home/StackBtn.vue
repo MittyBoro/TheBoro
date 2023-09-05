@@ -9,9 +9,7 @@
 
 <template>
   <component :is="Popper" :content="props.title" arrow hover placement="top">
-    <Btn third square class="m-2">
-      <Icon :name="props.name" />
-    </Btn>
+    <Btn :icon="props.name" third square></Btn>
   </component>
 </template>
 

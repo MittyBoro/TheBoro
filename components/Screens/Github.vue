@@ -23,9 +23,6 @@
 </template>
 
 <style lang="scss" scoped>
-  .pretitle-alt {
-    margin: 0;
-  }
   .link {
     &:hover {
       @apply text-primary-600;

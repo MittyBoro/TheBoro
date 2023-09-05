@@ -18,7 +18,7 @@
       v-text="pageData.description"
     ></div>
 
-    <div class="flex gap-5">
+    <div class="flex gap-4">
       <Btn icon="ig" third mini square />
       <Btn icon="tg" third mini square />
       <Btn icon="github" third mini square />

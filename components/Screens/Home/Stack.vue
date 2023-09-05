@@ -5,8 +5,8 @@
 
     <Card>
       <div class="elements max-w-lg">
-        <div class="pretitle-alt mb-5">Код</div>
-        <div class="flex flex-wrap -mx-2">
+        <div class="pretitle-alt">Код</div>
+        <div class="subcart">
           <ScreensHomeStackBtn
             name="vue"
             title="Vue.js — Фреймворк для создания пользовательских интерфейсов"
@@ -54,8 +54,8 @@
           />
         </div>
 
-        <div class="pretitle-alt mt-8 mb-5">Софт</div>
-        <div class="flex flex-wrap -mx-2">
+        <div class="pretitle-alt">Софт</div>
+        <div class="subcart">
           <ScreensHomeStackBtn
             name="vscode"
             title="Кодовый редактор Visual Studio Code"
@@ -102,8 +102,8 @@
           />
         </div>
 
-        <div class="pretitle-alt mt-8 mb-5">Мне помогают</div>
-        <div class="flex flex-wrap -mx-2">
+        <div class="pretitle-alt">Мне помогают</div>
+        <div class="subcart">
           <ScreensHomeStackBtn name="google" title="Поисковая система Google" />
           <ScreensHomeStackBtn
             name="bing"
@@ -138,5 +138,14 @@
 <style lang="scss" scoped>
   .card {
     overflow: visible;
+  }
+  .pretitle-alt {
+    @apply mb-5;
+  }
+  .subcart {
+    @apply flex flex-wrap gap-4;
+    &:not(:last-child) {
+      @apply mb-10;
+    }
   }
 </style>

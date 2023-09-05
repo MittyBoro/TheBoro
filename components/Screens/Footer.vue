@@ -1,15 +1,10 @@
 <template>
   <footer class="container pb-10">
-    <div class="flex justify-center mb-10">
-      <Btn third mini square class="mx-2">
-        <Icon name="ig" class="scale-[.8]" />
-      </Btn>
-      <Btn third mini square class="mx-2">
-        <Icon name="tg" />
-      </Btn>
-      <Btn third mini square class="mx-2">
-        <Icon name="vk" />
-      </Btn>
+    <div class="flex justify-center mb-10 gap-4">
+      <Btn icon="ig" third mini square />
+      <Btn icon="tg" third mini square />
+      <Btn icon="github" third mini square />
+      <Btn icon="vk" third mini square />
     </div>
 
     <div class="text-center text-xs">
