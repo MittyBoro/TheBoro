@@ -10,7 +10,14 @@
     <div class="font-head mb-6">
       <div class="text-3xl dark:drop-shadow-xl">
         <span class="my-title" v-html="pageData.title"></span>
-        <ScreensHomeTyping class="dark:text-white/50 text-black/70" />
+        <span class="pl-2 dark:text-white/50 text-black/70">
+          <ClientOnly>
+            <ScreensHomeTyping />
+            <template #fallback>
+              <span class="opacity-0">fullstack разработчик</span>
+            </template>
+          </ClientOnly>
+        </span>
       </div>
     </div>
     <div class="mb-6 dark:opacity-50 font-thin">{{ pageData.description }}</div>

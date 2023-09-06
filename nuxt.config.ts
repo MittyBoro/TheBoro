@@ -12,7 +12,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  devtools: true,
+  devtools: false,
   css: ['~/assets/styles/main.scss'],
   colorMode: {
     classSuffix: '',
@@ -45,7 +45,7 @@ export default defineNuxtConfig({
       strapiToken: process.env.STRAPI_TOKEN,
     },
   },
-  ssr: false,
+  ssr: true,
   strapi: {
     url: process.env.STRAPI_URL,
     prefix: '/api',

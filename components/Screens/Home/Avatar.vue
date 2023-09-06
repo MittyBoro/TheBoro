@@ -35,26 +35,29 @@
 
     return parseFloat(value)
   }
+  const avatarDistance = useAvatarDistance()
 
   const handleMouseMove = (event) => {
+    avatarDistance.value = getDistanceValues(0, 1, event)
+
     if (colorMode.value !== 'dark') {
       return
     }
 
     // приближение и стили авы
-    imgStyle.transformProps.scale = getDistanceValues(1, 1.7, event)
-    imgStyle.transformProps.translateY = getDistanceValues(0, 8, event) + '%'
-    let saturate = getDistanceValues(75, 130, event).toFixed(1)
+    imgStyle.transformProps.scale = 1 + avatarDistance.value * 0.7
+    imgStyle.transformProps.translateY = avatarDistance.value * 8 + '%'
+    let saturate = (75 + avatarDistance.value * 50).toFixed(1)
     imgStyle.filter = `saturate(${saturate}%)`
 
     // изменение цвета рамки
-    let bgP = getDistanceValues(100, 0, event)
+    let bgP = 100 - avatarDistance.value * 100
     avatarStyle.backgroundPosition = `${bgP}% ${bgP}%`
 
     if (getDistanceToElement(event, avatarDiv.value) < DISTANCE_TO_OBJECT) {
       // вибрация фото
       avatarStyle.animationPlayState = 'running'
-      let shift = getDistanceValues(0, 3, event).toFixed(0) + 'px'
+      let shift = (avatarDistance.value * 3).toFixed(0) + 'px'
       document.documentElement.style.setProperty('--animation-move', shift)
     } else {
       avatarStyle.animationPlayState = 'paused'
@@ -83,7 +86,7 @@
       <NuxtImg
         v-show="colorMode.value === 'light'"
         src="/ava-light.jpg"
-        width="150"
+        width="200"
         alt="Dima Boro"
       />
     </NuxtLink>

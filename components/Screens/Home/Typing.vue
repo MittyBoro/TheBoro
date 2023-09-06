@@ -1,12 +1,19 @@
 <script setup>
-  let phrases = [
-    'алкоголик',
+  const phrases = [
+    'алко',
     'fullstack разработчик',
     'front-end разработчик',
     'back-end разработчик',
   ]
+  const crazyPhrases = [
+    'алкоголик',
+    'сошёл с ума',
+    'мне нужна онаа',
+    'aaaaaaaaaaaaa',
+  ]
 
   const whoAmI = ref('')
+  const isUnMounted = ref(false)
 
   let state = reactive({
     currentPhraseIndex: 0,
@@ -19,8 +26,28 @@
   const PHRASE_END_DELAY = 2500
   const PHRASE_START_DELAY = 300
 
-  function typing() {
-    const currentPhrase = phrases[state.currentPhraseIndex]
+  const avatarDistance = useAvatarDistance()
+  const colorMode = useColorMode()
+
+  const isCrazy = computed(
+    () => avatarDistance.value > 0.7 && colorMode.value == 'dark'
+  )
+
+  watch(isCrazy, () => {
+    state.currentPhraseIndex = 0
+    state.currentCharacterIndex = 0
+    state.isDeleting = false
+  })
+
+  const typing = () => {
+    if (isUnMounted.value) {
+      return
+    }
+
+    const localPhrases = isCrazy.value ? [...crazyPhrases] : [...phrases]
+
+    const currentPhrase = localPhrases[state.currentPhraseIndex]
+
     if (state.isDeleting) {
       whoAmI.value = currentPhrase
         .toString()
@@ -38,16 +65,24 @@
       state.currentCharacterIndex === currentPhrase.length
     ) {
       state.isDeleting = true
-      setTimeout(typing, state.currentPhraseIndex == 0 ? 0 : PHRASE_END_DELAY)
+      let delay = state.currentPhraseIndex == 0 ? 0 : PHRASE_END_DELAY
+      if (isCrazy.value) {
+        delay /= 3
+      }
+      setTimeout(typing, delay)
     } else if (state.isDeleting && state.currentCharacterIndex === 0) {
       state.isDeleting = false
-      state.currentPhraseIndex = (state.currentPhraseIndex + 1) % phrases.length
+      state.currentPhraseIndex =
+        (state.currentPhraseIndex + 1) % localPhrases.length
       setTimeout(typing, PHRASE_START_DELAY)
     } else {
       setTimeout(typing, state.isDeleting ? DELETING_DELAY : TYPING_DELAY)
     }
   }
+
   onMounted(typing)
+
+  onUnmounted(() => (isUnMounted.value = true))
 </script>
 
 <template>
@@ -56,9 +91,6 @@
 
 <style lang="scss" scoped>
   .typing {
-    &::before {
-      content: ' ';
-    }
     &::after {
       content: '|';
       animation: pulse 0.7s linear infinite;

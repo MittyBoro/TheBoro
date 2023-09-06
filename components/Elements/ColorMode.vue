@@ -10,6 +10,8 @@
       document.documentElement.classList.remove('transitioning')
     }, 100)
   }
+
+  // setInterval(toggleColorMode, 100)
 </script>
 
 <template>

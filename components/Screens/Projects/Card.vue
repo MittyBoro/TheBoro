@@ -9,10 +9,10 @@
 </script>
 
 <template>
-  <Card class="hover">
+  <Card class="hover max-w-2xl">
     <template #top>
       <div
-        class="shadow-lg rounded-lg overflow-hidden cursor-pointer aspect-[16/9]"
+        class="shadow-lg rounded-lg overflow-hidden cursor-pointer aspect-[16/10]"
       >
         <img
           :src="useExtImg(attr.thumb, 'small')"
@@ -40,7 +40,8 @@
           <h2>{{ attr.title }}</h2>
         </div>
       </div>
-      <NuxtLink :to="link" class="btns-item">
+      <div class="btns-item">
+        <NuxtLink :to="link" class="absolute inset-0" />
         <Btn is="link" :to="link" mini>
           <Icon name="eye" class="w-4 h-4 mr-2" />
           <span>Подробнее</span>
@@ -49,7 +50,7 @@
           <span>Сайт</span>
           <Icon name="external" class="w-4 h-4 ml-2" />
         </Btn>
-      </NuxtLink>
+      </div>
     </template>
   </Card>
 </template>

@@ -30,8 +30,8 @@
       left: -100px;
       right: -100px;
       height: 200px;
-      opacity: 0.5;
-      @apply bg-primary-200 dark:bg-primary-700 blur-[100px];
+      @apply bg-primary-200 dark:bg-primary-700/50 blur-[100px] animate-pulse;
+      animation-duration: 5s;
       // background-position: 50% 100%;
       // background-size: 150% auto;
       // opacity: 0.4;
