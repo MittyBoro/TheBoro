@@ -10,6 +10,7 @@ module.exports = {
     './nuxt.config.{js,ts}',
     './app.vue',
   ],
+  darkMode: 'class',
   theme: {
     colors: {
       transparent: 'transparent',
@@ -18,7 +19,6 @@ module.exports = {
       white: colors.white,
       gray: colors.zinc,
       primary: colors.rose,
-      secondary: colors.slate,
     },
     container: {
       center: true,

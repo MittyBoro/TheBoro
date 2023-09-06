@@ -7,6 +7,7 @@
     nano: Boolean,
     muted: Boolean,
     square: Boolean,
+    rounded: Boolean,
 
     icon: {
       type: String,
@@ -41,6 +42,7 @@
         'btn-mini': props.mini,
         'btn-nano': props.nano,
         'aspect-square': props.square,
+        'btn-rounded-full': props.rounded,
       },
     ]
   })
@@ -67,10 +69,12 @@
     @apply font-head text-center uppercase tracking-widest text-xs leading-none;
     @apply cursor-pointer transition-all duration-200;
 
-    @apply shadow-lg shadow-gray-950/50;
+    @apply shadow-lg;
+    @apply dark:shadow-gray-950/30 shadow-gray-500/20;
     &:hover {
       @apply -translate-y-0.5;
-      @apply shadow-xl shadow-gray-950/50;
+      @apply shadow-xl;
+      @apply dark:shadow-gray-950/50 shadow-gray-500/30;
       svg {
         @apply scale-110;
       }
@@ -79,7 +83,7 @@
       @apply rounded-2xl;
     }
     svg {
-      @apply transition flex-shrink-0 fill-current max-w-full max-h-full;
+      @apply flex-shrink-0 fill-current max-w-full max-h-full;
       // 🩼🩼
       &.w-h {
         @apply w-4;
@@ -90,19 +94,29 @@
     }
   }
 
+  .btn-rounded-full {
+    @apply rounded-full;
+  }
+
   .btn {
     background-position: 100% 50%;
     background-size: 200%;
 
-    @apply bg-gradient-to-r from-primary-600 via-primary-600 to-primary-800 text-white text-opacity-80;
+    @apply bg-gradient-to-r text-white text-opacity-90;
+    @apply dark:from-primary-600 dark:via-primary-600 dark:to-primary-800;
+    @apply from-primary-600 via-primary-600 to-primary-500;
     &:hover {
       background-position: 0% 50%;
-      @apply shadow-xl shadow-primary-900 text-white;
+      @apply shadow-xl text-white;
+      @apply dark:shadow-primary-900;
+      @apply shadow-primary-600/40;
     }
   }
 
   .btn-second {
-    @apply text-gray-300 border-gray-800 bg-gray-950 bg-opacity-50;
+    @apply dark:text-gray-300 dark:bg-gray-950/50;
+    @apply text-gray-700 bg-white/30;
+    @apply bg-opacity-50;
     &::before {
       content: '';
       position: absolute;
@@ -118,7 +132,7 @@
       border-radius: inherit;
     }
     &:hover {
-      @apply text-white;
+      @apply dark:text-white text-primary-600;
       &::before {
         background-position: 0% 0%;
         @apply -inset-0.5;
@@ -127,9 +141,13 @@
   }
 
   .btn-third {
-    @apply text-gray-300 bg-gray-900 bg-opacity-70;
+    @apply dark:text-gray-300 dark:bg-gray-900;
+    @apply text-gray-600 bg-gray-100;
+    @apply bg-opacity-70;
     &:hover {
-      @apply bg-opacity-90 text-white;
+      @apply bg-opacity-90;
+      @apply dark:text-white;
+      @apply text-primary-500;
     }
   }
 

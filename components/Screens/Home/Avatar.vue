@@ -22,7 +22,9 @@
     animationPlayState: 'paused',
   })
 
-  const getValues = (from, to, event) => {
+  const colorMode = useColorMode()
+
+  const getDistanceValues = (from, to, event) => {
     const value = getValueByDistance(
       event,
       avatarDiv.value,
@@ -35,20 +37,24 @@
   }
 
   const handleMouseMove = (event) => {
+    if (colorMode.value !== 'dark') {
+      return
+    }
+
     // приближение и стили авы
-    imgStyle.transformProps.scale = getValues(1, 1.7, event)
-    imgStyle.transformProps.translateY = getValues(0, 8, event) + '%'
-    let saturate = getValues(75, 130, event).toFixed(1)
+    imgStyle.transformProps.scale = getDistanceValues(1, 1.7, event)
+    imgStyle.transformProps.translateY = getDistanceValues(0, 8, event) + '%'
+    let saturate = getDistanceValues(75, 130, event).toFixed(1)
     imgStyle.filter = `saturate(${saturate}%)`
 
     // изменение цвета рамки
-    let bgP = getValues(100, 0, event)
+    let bgP = getDistanceValues(100, 0, event)
     avatarStyle.backgroundPosition = `${bgP}% ${bgP}%`
 
     if (getDistanceToElement(event, avatarDiv.value) < DISTANCE_TO_OBJECT) {
       // вибрация фото
       avatarStyle.animationPlayState = 'running'
-      let shift = getValues(0, 3, event).toFixed(0) + 'px'
+      let shift = getDistanceValues(0, 3, event).toFixed(0) + 'px'
       document.documentElement.style.setProperty('--animation-move', shift)
     } else {
       avatarStyle.animationPlayState = 'paused'
@@ -66,9 +72,21 @@
 
 <template>
   <div class="avatar w-40 h-40 star" :style="avatarStyle" ref="avatarDiv">
-    <div class="avatar-img-wrap">
-      <img src="~/assets/images/ava.png" alt="" :style="imgStyle" />
-    </div>
+    <NuxtLink to="/" class="avatar-img-wrap">
+      <NuxtImg
+        v-show="colorMode.value === 'dark'"
+        src="/ava-dark.png"
+        width="300"
+        alt="Dima Boro"
+        :style="imgStyle"
+      />
+      <NuxtImg
+        v-show="colorMode.value === 'light'"
+        src="/ava-light.jpg"
+        width="150"
+        alt="Dima Boro"
+      />
+    </NuxtLink>
   </div>
 </template>
 
@@ -78,16 +96,19 @@
     background-position: 100% 100%;
     background-size: 250% 250%;
     animation: vibration 0.7s infinite;
+    overflow: hidden;
 
     @apply p-2 relative rounded-full;
-    @apply shadow-2xl shadow-black;
+    @apply shadow-2xl;
+    @apply dark:shadow-black;
+    @apply shadow-black/20;
     @apply transition-shadow;
 
     .avatar-img-wrap {
-      @apply rounded-full overflow-hidden;
+      @apply block rounded-full overflow-hidden select-none;
     }
     img {
-      filter: saturate(75%);
+      @apply dark:saturate-[75%];
     }
   }
   @keyframes vibration {

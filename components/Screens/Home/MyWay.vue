@@ -10,14 +10,16 @@
     <div class="title">Мой опыт</div>
 
     <div class="flex">
-      <div class="w-2 rounded-lg bg-gray-950 shadow-xl shadow-gray-800"></div>
+      <div
+        class="w-2 rounded-lg shadow-xl dark:shadow-gray-800 dark:bg-gray-950 shadow-black/20 bg-gray-300"
+      ></div>
       <div class="ml-9 grid gap-6 w-full">
         <Card v-for="item in resume" :key="item.id">
           <div class="date mb-5">
             {{ item.attributes.period }}
           </div>
           <div
-            class="text-sm leading-6 text-gray-400 max-w-lg prose"
+            class="text-sm leading-6 max-w-lg prose"
             v-html="item.attributes.text"
           ></div>
         </Card>
@@ -31,24 +33,27 @@
     overflow: visible;
     &::before {
       content: '';
-      @apply absolute top-9 left-0 h-2 w-10 bg-gray-950 -translate-x-full;
+      @apply absolute top-9 left-0 h-2 w-10  -translate-x-full;
+      @apply dark:bg-gray-950 bg-gray-300;
     }
     &::after {
       content: '';
 
       @apply absolute top-9 -left-16 ml-2 -mt-3  w-8 h-8;
-      @apply rounded-full bg-gray-900 border-8 border-gray-950;
+      @apply rounded-full border-8;
+      @apply dark:bg-gray-900 dark:border-gray-950;
+      @apply bg-white border-gray-300;
       @apply transition-colors duration-300 scale-75;
     }
     .date {
-      @apply text-xs text-white text-opacity-70 font-head transition-colors;
+      @apply text-xs font-head transition opacity-60 tracking-widest;
     }
     &:hover {
       &::after {
-        @apply bg-primary-700;
+        @apply dark:bg-primary-700 bg-primary-500;
       }
       .date {
-        @apply text-primary-600;
+        @apply dark:text-primary-600 text-primary-500 opacity-100;
       }
     }
   }

@@ -3,20 +3,32 @@
     project: Object,
   })
 
+  const imageRef = ref(null)
+
   const categoriesStr = computed(() => {
     const list = project.categories.data.map((item) =>
       item.attributes.title.trim()
     )
     return list.join(', ')
   })
+
+  const setImgLoaded = () => {
+    imageRef.value.classList.add('opacity-100')
+  }
+  onMounted(() => {
+    imageRef.value.addEventListener('load', setImgLoaded)
+  })
+  onBeforeUnmount(() => {
+    imageRef.value.removeEventListener('load', setImgLoaded)
+  })
 </script>
 <template>
   <section class="project-screen container -mt-10">
     <Card>
       <template #top>
-        <NuxtLink to="/" class="absolute top-0 right-0 bottom-0 z-30">
+        <NuxtLink to="/#projects" class="absolute top-0 right-0 bottom-0 z-30">
           <div class="sticky top-0">
-            <Btn third mini square icon="close" class="btn-close"></Btn>
+            <Btn third square icon="close" class="btn-close"></Btn>
           </div>
         </NuxtLink>
       </template>
@@ -25,18 +37,21 @@
           <img
             loading="lazy"
             :src="useExtImg(project.thumb)"
-            class="mask-image object-cover object-top w-full h-full"
+            class="mask-image object-cover object-top w-full h-full opacity-0 transition-opacity duration-300"
             :alt="project.title"
+            ref="imageRef"
           />
         </div>
 
         <div class="container-md mt-64 relative">
           <div class="drop-shadow-sm">
             <div class="flex pb-5">
-              <div class="pretitle flex text-white">
+              <div
+                class="pretitle flex dark:text-white text-black drop-shadow-sm"
+              >
                 <NuxtLink to="/#projects" class="link">Проекты</NuxtLink>
-                <span class="px-3 opacity-30">/</span>
-                <span class="opacity-70">{{ categoriesStr }}</span>
+                <span class="px-3 opacity-40">/</span>
+                <span class="opacity-80">{{ categoriesStr }}</span>
               </div>
               <div class="ml-auto pl-5 flex items-center opacity-60">
                 <Icon name="eye" class="w-4 h-auto mr-2" />
@@ -84,7 +99,7 @@
     @apply rounded-t-none;
   }
   .btn-close {
-    @apply rounded-none rounded-bl-xl bg-gray-950/30 shadow-xl;
+    @apply rounded-none rounded-bl-xl dark:bg-black/30 bg-white/50 shadow-xl;
   }
   .container-md {
     @apply container max-w-3xl;
@@ -102,7 +117,9 @@
   .actions-el {
     @apply sticky z-20 -bottom-5;
     @apply pt-7 pb-10;
-    @apply bg-gradient-to-b  from-transparent via-gray-950/70 via-40% to-gray-950/90;
+    @apply bg-gradient-to-b from-transparent via-40%;
+    @apply dark:via-gray-950/70 via-40% dark:to-gray-950/90;
+    @apply via-gray-200/70 to-gray-200/90;
     // &:hover {
     //   @apply translate-y-0 top-0;
     //   opacity: 1;
@@ -121,5 +138,18 @@
   }
   .mask-image {
     mask-image: linear-gradient(to bottom, #000e 0%, transparent 100%);
+  }
+
+  .prose {
+    --tw-prose-bullets: currentColor;
+  }
+  .prose
+    :where(.prose > ul > li > *:first-child):not(
+      :where([class~='not-prose'], [class~='not-prose'] *)
+    ) {
+    @apply my-1;
+  }
+  .prose :where(p):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    @apply my-2;
   }
 </style>

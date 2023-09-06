@@ -30,11 +30,18 @@
 </style>
 <style lang="scss">
   :root {
+    --popper-theme-border-radius: theme(borderRadius.lg);
+    --popper-theme-padding: theme(spacing.2) theme(spacing.4);
+  }
+  html.dark {
     --popper-theme-background-color: theme(colors.gray.950);
     --popper-theme-background-color-hover: theme(colors.gray.950);
     --popper-theme-text-color: theme(colors.white);
-    --popper-theme-border-radius: theme(borderRadius.lg);
-    --popper-theme-padding: theme(spacing.2) theme(spacing.4);
+  }
+  html {
+    --popper-theme-background-color: theme(colors.white);
+    --popper-theme-background-color-hover: theme(colors.white);
+    --popper-theme-text-color: theme(colors.gray.800);
   }
 
   .popper {

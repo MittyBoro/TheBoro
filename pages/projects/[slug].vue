@@ -1,7 +1,7 @@
 <script setup>
   const page = await useApi().findOne('projects/' + useRoute().params.slug, {
     populate: ['seo', 'thumb', 'categories', 'tags'],
-    fields: ['title', 'description', 'likes', 'website', 'srcLink', 'views'],
+    fields: ['title', 'description', 'website', 'srcLink', 'views'],
   })
 
   const projects = await useApi().find('projects', {

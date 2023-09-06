@@ -3,8 +3,29 @@
 @tailwind utilities;
 
 :root {
+  color-scheme: only light;
   --scroll-behavior: smooth;
+  --swiper-theme-color: theme(colors.primary.600) !important;
   --loading-color: theme(colors.primary.600);
+}
+
+/* ========= General ========= */
+::selection {
+  @apply text-white bg-primary-600;
+}
+
+html {
+  --btn-gradietnt: linear-gradient(
+    to bottom right,
+    theme(colors.primary.500/0.75),
+    theme(colors.primary.600/0.75),
+    theme(colors.gray.200),
+    theme(colors.gray.100)
+  );
+}
+
+html.dark {
+  color-scheme: dark;
   --btn-gradietnt: linear-gradient(
     to bottom right,
     theme(colors.primary.600/0.75),
@@ -12,15 +33,6 @@
     theme(colors.gray.900/0.75),
     theme(colors.gray.950/0.75)
   );
-}
-
-/* ========= General ========= */
-::selection {
-  @apply text-white bg-primary-700;
-}
-
-html {
-  color-scheme: dark;
 }
 
 .page-enter-active,
@@ -36,7 +48,7 @@ html {
   cursor: pointer;
   @apply transition-colors;
   &:hover {
-    @apply text-primary-400;
+    @apply text-primary-500;
   }
 }
 

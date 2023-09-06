@@ -15,12 +15,3 @@
     </div>
   </footer>
 </template>
-
-<style lang="scss" scoped>
-  .btn-third {
-    @apply shadow-xl shadow-gray-900;
-    &:hover {
-      @apply shadow-lg shadow-gray-900;
-    }
-  }
-</style>

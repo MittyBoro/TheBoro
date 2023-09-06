@@ -3,7 +3,7 @@
     name: String,
   })
   const IconSVG = await import(
-    `../../assets/images/${props.name}.svg?component`
+    `../../assets/images/icons/${props.name}.svg?component`
   )
 </script>
 

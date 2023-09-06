@@ -77,12 +77,16 @@
             title="Графический редактор Adobe Photoshop"
           />
           <ScreensHomeStackBtn
-            name="telegram-logo"
-            title="Мессенджер Telegram"
-          />
-          <ScreensHomeStackBtn
             name="windows"
             title="Операционная система Windows"
+          />
+          <ScreensHomeStackBtn
+            name="ubuntu"
+            title="Операционная система Ubuntu"
+          />
+          <ScreensHomeStackBtn
+            name="telegram-logo"
+            title="Мессенджер Telegram"
           />
           <ScreensHomeStackBtn
             name="caramba-switcher"

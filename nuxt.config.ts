@@ -14,11 +14,24 @@ export default defineNuxtConfig({
   },
   devtools: true,
   css: ['~/assets/styles/main.scss'],
+  colorMode: {
+    classSuffix: '',
+    preference: 'dark',
+  },
   components: [
     { path: '~/components/Elements', pathPrefix: false },
     '~/components',
   ],
-  modules: ['@nuxtjs/strapi'],
+  image: {
+    dir: 'assets/images',
+    format: ['webp'],
+  },
+  modules: [
+    '@nuxtjs/strapi',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/color-mode',
+    '@nuxt/image',
+  ],
   postcss: {
     plugins: {
       'postcss-import': {},

@@ -21,7 +21,9 @@
         />
       </div>
       <div class="title-item">
-        <div class="flex justify-between items-center mb-4">
+        <div
+          class="pretitle-row dark:text-white text-black flex justify-between items-center mb-4"
+        >
           <div class="pretitle-alt">
             <span v-for="cat in attr.categories.data" :key="cat.id">
               {{ cat.attributes.title }}
@@ -34,9 +36,9 @@
             </div>
           </div>
         </div>
-        <NuxtLink :to="link" class="title-alt link max-w-md block">
+        <div class="title-alt max-w-md">
           <h2>{{ attr.title }}</h2>
-        </NuxtLink>
+        </div>
       </div>
       <NuxtLink :to="link" class="btns-item">
         <Btn is="link" :to="link" mini>
@@ -54,8 +56,8 @@
 
 <style lang="scss" scoped>
   .image-item {
-    mask-image: linear-gradient(to bottom, #000d, #0001 99%);
-    @apply transition duration-300;
+    mask-image: linear-gradient(to bottom, #000d, #0005 50%, #0001 99%);
+    @apply transition duration-300 filter;
   }
 
   .btns-item {
@@ -66,13 +68,16 @@
 
   .title-item {
     @apply absolute left-0 right-0 bottom-0 px-8 pb-8;
-    @apply transition duration-300;
+    @apply transition-opacity duration-300;
   }
 
   .card {
     display: flex;
     flex-direction: column;
     height: 100%;
+    .pretitle-row {
+      @apply transition duration-300;
+    }
     &:hover {
       .btns-item {
         @apply opacity-100 translate-y-0;
@@ -80,18 +85,18 @@
       .image-item {
         @apply blur opacity-70 scale-110;
       }
+
+      .pretitle-row {
+        @apply opacity-0;
+      }
+      .title-item {
+        opacity: 0.5;
+        @apply blur-[1px];
+      }
     }
   }
   .pretitle-alt {
     margin: 0;
-  }
-  .link {
-    &:hover {
-      @apply text-primary-600;
-      .ex-icon {
-        @apply scale-100 opacity-100;
-      }
-    }
   }
   .ex-icon {
     margin-right: -1em;
