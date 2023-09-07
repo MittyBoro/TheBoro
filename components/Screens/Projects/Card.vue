@@ -63,12 +63,12 @@
 
   .btns-item {
     @apply absolute inset-0 flex items-center justify-center gap-5 p-8;
-    @apply opacity-0 -translate-y-20;
+    @apply opacity-0 -translate-y-10;
     @apply transition duration-300;
   }
 
   .title-item {
-    @apply absolute left-0 right-0 bottom-0 px-8 pb-8;
+    @apply absolute left-0 right-0 bottom-0 p-4 sm:p-8;
     @apply transition-opacity duration-300;
   }
 

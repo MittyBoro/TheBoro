@@ -26,7 +26,7 @@
     if (props.square) return ''
     if (props.mini) return 'px-6'
     else if (props.nano) return 'px-3'
-    else return 'px-10'
+    else return 'px-8'
   })
   const typeClass = computed(() => {
     if (props.second) return 'btn-second'
@@ -64,10 +64,12 @@
   .btn,
   .btn-second,
   .btn-third {
-    @apply flex items-center justify-center leading-none;
-    @apply relative h-14 py-5 rounded-xl;
+    @apply relative flex items-center justify-center leading-none;
     @apply font-head text-center uppercase tracking-widest text-xs leading-none;
     @apply cursor-pointer transition-all duration-200;
+
+    @apply h-12 py-4 rounded-lg;
+    @apply sm:h-14 sm:py-5 sm:rounded-xl;
 
     @apply shadow-lg;
     @apply dark:shadow-gray-950/30 shadow-gray-500/20;
@@ -152,7 +154,8 @@
   }
 
   .btn-mini {
-    @apply rounded-lg h-11 py-3;
+    @apply rounded-md h-9 py-2 text-[0.65rem];
+    @apply sm:rounded-lg sm:h-11 sm:py-3 sm:text-sm;
   }
 
   .btn-nano {

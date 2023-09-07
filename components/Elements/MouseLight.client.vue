@@ -11,8 +11,13 @@
   })
 
   const handleMouseMove = (event) => {
-    lightStyle.top = event.clientY + 'px'
-    lightStyle.left = event.clientX + 'px'
+    if (event.touches?.length > 0) {
+      lightStyle.top = event.touches[0].clientY + 'px'
+      lightStyle.left = event.touches[0].clientX + 'px'
+    } else {
+      lightStyle.top = event.clientY + 'px'
+      lightStyle.left = event.clientX + 'px'
+    }
 
     lightStyle.opacity = MAIN_OPACITY
 
@@ -41,11 +46,18 @@
     })
   }
 
+  let event
+
   onMounted(() => {
-    document.addEventListener('mousemove', handleMouseMove)
+    if ('ontouchmove' in document.documentElement) {
+      event = 'touchmove'
+    } else {
+      event = 'mousemove'
+    }
+    document.addEventListener(event, handleMouseMove)
   })
   onUnmounted(() => {
-    document.removeEventListener('mousemove', handleMouseMove)
+    document.removeEventListener(event, handleMouseMove)
   })
 </script>
 

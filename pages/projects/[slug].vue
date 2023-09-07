@@ -21,6 +21,8 @@
     next: nextIndex < projects.length ? projects[nextIndex] : null,
   })
 
+  provide('isProject', true)
+
   useSeoMeta({
     title: page.data.seo.metaTitle,
     ogTitle: page.data.seo.metaTitle,

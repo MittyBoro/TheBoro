@@ -1,11 +1,32 @@
-<script setup></script>
+<script setup>
+  import favicon from '~/assets/images/favicon.png'
+
+  const route = useRoute()
+  const isProject = computed(() => {
+    return route.name.indexOf('projects') === 0
+  })
+
+  useSeoMeta({
+    ogImage: favicon,
+  })
+  useHead({
+    htmlAttrs: {
+      lang: 'ru',
+    },
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicon.ico',
+      },
+    ],
+  })
+</script>
 
 <template>
   <div class="wrapper">
-    <ClientOnly>
-      <MouseLight />
-    </ClientOnly>
-    <ColorMode />
+    <MouseLight />
+    <ColorMode fixed v-show="!isProject" />
     <div class="relative pt-10">
       <slot></slot>
       <Delimiter />

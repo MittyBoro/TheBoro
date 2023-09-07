@@ -147,7 +147,7 @@
     @apply mb-5;
   }
   .subcart {
-    @apply flex flex-wrap gap-4;
+    @apply flex flex-wrap gap-2 md:gap-4;
     &:not(:last-child) {
       @apply mb-10;
     }

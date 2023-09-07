@@ -26,31 +26,38 @@
   <section class="project-screen container -mt-10">
     <Card>
       <template #top>
-        <NuxtLink to="/#projects" class="absolute top-0 right-0 bottom-0 z-30">
-          <div class="sticky top-0">
-            <Btn third square icon="close" class="btn-close"></Btn>
+        <div class="absolute top-0 right-0 bottom-0 z-30">
+          <div class="sticky top-4 flex gap-3 sm:gap-5">
+            <ColorMode class="btn-mode" />
+            <Btn
+              is="link"
+              to="/#projects"
+              third
+              square
+              icon="close"
+              class="btn-close"
+            ></Btn>
           </div>
-        </NuxtLink>
-      </template>
-      <template #default>
+        </div>
         <div class="mask-background pointer-events-none aspect-[16/9]">
           <img
             loading="lazy"
             :src="useExtImg(project.thumb)"
-            class="mask-image object-cover object-top w-full h-full opacity-0 transition-opacity duration-300"
+            class="mask-image object-cover object-top w-full h-full opacity-0 transition-opacity duration-300 select-none"
             :alt="project.title"
             ref="imageRef"
           />
         </div>
 
-        <div class="container-md mt-64 relative">
+        <div class="container-md container relative">
+          <div class="aspect-[16/8]"></div>
           <div class="drop-shadow-sm">
             <div class="flex pb-5">
               <div
-                class="pretitle flex dark:text-white text-black drop-shadow-sm"
+                class="pretitle flex items-center dark:text-white text-black drop-shadow-sm"
               >
                 <NuxtLink to="/#projects" class="link">Проекты</NuxtLink>
-                <span class="px-3 opacity-40">/</span>
+                <span class="px-1.5 md:px-3 opacity-40">/</span>
                 <span class="opacity-80">{{ categoriesStr }}</span>
               </div>
               <div class="ml-auto pl-5 flex items-center opacity-60">
@@ -79,10 +86,8 @@
 
           <div class="prose pt-10" v-html="project.description"></div>
         </div>
-      </template>
-      <template #bottom>
-        <div class="actions-el -mt-5">
-          <div class="container-md">
+        <div class="actions-el mt-3">
+          <div class="container-md container">
             <ScreensSingleProjectActions
               class="justify-start"
               :project="project"
@@ -99,10 +104,14 @@
     @apply rounded-t-none;
   }
   .btn-close {
-    @apply rounded-none rounded-bl-xl dark:bg-black/30 bg-white/50 shadow-xl;
+    @apply rounded-none rounded-l-xl;
+  }
+  .btn-close,
+  .btn-mode {
+    @apply dark:bg-black/30 bg-white/50 shadow-xl;
   }
   .container-md {
-    @apply container max-w-3xl;
+    @apply md:max-w-3xl;
   }
   .mask-background {
     --spacing-top: theme(spacing.72);

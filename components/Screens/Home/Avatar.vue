@@ -74,7 +74,11 @@
 </script>
 
 <template>
-  <div class="avatar w-40 h-40 star" :style="avatarStyle" ref="avatarDiv">
+  <div
+    class="avatar w-28 sm:w-40 star aspect-square"
+    :style="avatarStyle"
+    ref="avatarDiv"
+  >
     <NuxtLink to="/" class="avatar-img-wrap">
       <NuxtImg
         v-show="colorMode.value === 'dark'"
@@ -101,7 +105,7 @@
     animation: vibration 0.7s infinite;
     overflow: hidden;
 
-    @apply p-2 relative rounded-full;
+    @apply p-1.5 sm:p-2 relative rounded-full;
     @apply shadow-2xl;
     @apply dark:shadow-black;
     @apply shadow-black/20;

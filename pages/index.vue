@@ -6,7 +6,6 @@
     ogTitle: page.data.seo.metaTitle,
     description: page.data.seo.metaDescription,
     ogDescription: page.data.seo.metaDescription,
-    ogImage: 'https://example.com/image.png',
   })
 </script>
 

@@ -18,18 +18,24 @@
   <div>
     <swiper
       :modules="modules"
-      :slides-per-view="2"
-      :space-between="32"
+      :slides-per-view="1"
+      :space-between="16"
       @swiper="onSwiper"
       rewind
       watchSlidesProgress
+      :breakpoints="{
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 32,
+        },
+      }"
     >
       <swiper-slide v-for="item in projects" :key="item.id">
         <ScreensProjectsCard :item="item" />
       </swiper-slide>
     </swiper>
 
-    <div class="mt-14 flex gap-5 justify-center">
+    <div class="sm:mt-14 mt-8 flex gap-5 justify-center">
       <Btn
         third
         square

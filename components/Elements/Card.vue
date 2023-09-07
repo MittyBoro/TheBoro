@@ -3,7 +3,7 @@
 <template>
   <div class="card">
     <slot name="top"></slot>
-    <div v-if="$slots.default" class="relative p-8"><slot></slot></div>
+    <div v-if="$slots.default" class="relative p-5 sm:p-8"><slot></slot></div>
     <slot name="bottom"></slot>
   </div>
 </template>

@@ -9,7 +9,7 @@
 
 <template>
   <div
-    class="delimiter relative pt-28 pb-24 blur-sm"
+    class="delimiter relative sm:pt-28 sm:pb-24 pt-16 pb-12 blur-sm"
     :class="{ container: !props.full }"
   ></div>
 </template>

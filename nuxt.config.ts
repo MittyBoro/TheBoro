@@ -12,7 +12,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  devtools: false,
+  devtools: true,
   css: ['~/assets/styles/main.scss'],
   colorMode: {
     classSuffix: '',

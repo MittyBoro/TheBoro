@@ -35,6 +35,10 @@ html.dark {
   );
 }
 
+body {
+  @apply text-sm md:text-base;
+}
+
 .page-enter-active,
 .page-leave-active {
   transition: all 0.2s;
@@ -53,23 +57,42 @@ html.dark {
 }
 
 .pretitle {
-  letter-spacing: 0.45em;
-  @apply mb-2 text-xs uppercase opacity-50;
+  letter-spacing: 0.4em;
+  @apply mb-2 uppercase opacity-50 leading-none;
+  @apply text-[0.6rem];
+  @apply sm:text-xs;
 }
 .pretitle-alt {
   letter-spacing: 0.15em;
-  @apply text-xs uppercase;
+  @apply text-[0.6rem];
+  @apply sm:text-xs;
+  @apply leading-none uppercase;
 }
 .title {
-  @apply font-head text-4xl mb-10 tracking-widest;
+  @apply font-head text-lg mb-10 tracking-widest;
+  @apply text-xl;
+  @apply md:text-2xl;
+  @apply lg:text-4xl;
 }
 .title-alt {
-  @apply font-head text-2xl tracking-widest leading-snug;
+  @apply font-head  tracking-widest leading-snug;
+  @apply text-lg;
+  @apply md:text-xl;
+  @apply xl:text-2xl;
 }
 .container {
-  @apply max-w-screen-xl;
+  @apply px-5;
+  @apply sm:px-8;
+  @apply max-w-screen-sm;
+  @apply md:max-w-screen-sm;
+  @apply lg:max-w-screen-xl;
 }
 
 .prose {
   @apply prose-gray dark:prose-invert;
+  @apply prose-sm;
+  @apply md:prose-base;
+  & > p:last-child {
+    margin-bottom: 0;
+  }
 }

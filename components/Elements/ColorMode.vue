@@ -1,4 +1,8 @@
 <script setup>
+  const { fixed } = defineProps({
+    fixed: Boolean,
+  })
+
   const colorMode = useColorMode()
 
   const toggleColorMode = () => {
@@ -15,18 +19,23 @@
 </script>
 
 <template>
-  <Btn third square rounded class="btn-mode" @click="toggleColorMode">
-    <Icon v-show="colorMode.value === 'dark'" name="moon" />
-    <Icon v-show="colorMode.value === 'light'" name="sun" />
+  <Btn
+    third
+    square
+    rounded
+    :class="{ 'btn-fixed': fixed }"
+    @click="toggleColorMode"
+  >
+    <span class="w-6">
+      <Icon v-show="colorMode.value === 'dark'" name="moon" />
+      <Icon v-show="colorMode.value === 'light'" name="sun" />
+    </span>
   </Btn>
 </template>
 
 <style lang="scss" scoped>
-  .btn-mode {
-    @apply fixed top-4 right-4 z-30;
-    :deep(svg) {
-      @apply scale-125;
-    }
+  .btn-fixed {
+    @apply fixed top-5 right-5 z-30;
   }
 </style>
 
