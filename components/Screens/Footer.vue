@@ -1,10 +1,21 @@
+<script setup>
+  const socialLinks = inject('socialLinks')
+</script>
+
 <template>
   <footer class="container pb-10">
     <div class="flex justify-center mb-10 gap-3 sm:gap-4">
-      <Btn icon="ig" third mini square />
-      <Btn icon="tg" third mini square />
-      <Btn icon="github" third mini square />
-      <Btn icon="vk" third mini square />
+      <Btn
+        v-for="item in socialLinks"
+        :key="item.name"
+        :icon="item.name"
+        :to="item.url"
+        is="link"
+        target="_blank"
+        third
+        mini
+        square
+      />
     </div>
 
     <div class="text-center text-xs">

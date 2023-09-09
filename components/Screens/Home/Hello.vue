@@ -2,6 +2,8 @@
   const { pageData } = defineProps({
     pageData: Object,
   })
+
+  const socialLinks = inject('socialLinks')
 </script>
 
 <template>
@@ -35,10 +37,17 @@
     <div
       class="flex gap-3 sm:gap-4 sm:mt-auto flex-wrap justify-center sm:justify-normal"
     >
-      <Btn icon="ig" third mini square />
-      <Btn icon="tg" third mini square />
-      <Btn icon="github" third mini square />
-      <Btn icon="vk" third mini square />
+      <Btn
+        v-for="item in socialLinks"
+        :key="item.name"
+        :icon="item.name"
+        :to="item.url"
+        is="link"
+        target="_blank"
+        third
+        mini
+        square
+      />
       <HashLink to="#projects" class="ml-auto hidden sm:block">
         <Btn mini class="lg:mr-5">Портфолио</Btn>
       </HashLink>

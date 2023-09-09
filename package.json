@@ -1,5 +1,8 @@
 {
   "name": "the_boro",
+  "displayName": "TheBoro",
+  "version": "1.0.0",
+  "description": "This project is my personal portfolio, where I showcase my skills in web development and design.",
   "private": true,
   "config": {
     "nuxt": {

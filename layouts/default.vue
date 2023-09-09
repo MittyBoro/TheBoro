@@ -6,6 +6,10 @@
     return route.name.indexOf('projects') === 0
   })
 
+  const { data } = await useApi().findOne('layout')
+
+  provide('socialLinks', data.socialLinks)
+
   useSeoMeta({
     ogImage: favicon,
   })
