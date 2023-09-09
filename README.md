@@ -1,63 +1,31 @@
-# Nuxt 3 Minimal Starter
+# Dima Boro's Portfolio Project
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## About the project
 
-## Setup
+This project is my personal portfolio, where I showcase my skills in web development and design. I built this website using modern technologies and frameworks, such as Vue.js, Nuxt 3 and TailwindCSS. I also optimized it for fast loading and responsiveness. On this website, you can learn more about me, see my work and contact me. I hope you enjoy my project and find something useful or interesting in it. 😊
 
-Make sure to install the dependencies:
+## Technologies
 
-```bash
-# npm
-npm install
+For this project, I used:
 
-# pnpm
-pnpm install
+- HTML
+- CSS
+- SASS
+- TailwindCSS
+- JavaScript
+- Vue.js
+- Nuxt 3
+- Nginx
 
-# yarn
-yarn install
-```
+## Running the project
 
-## Development Server
+Need to:
 
-Start the development server on `http://localhost:3000`:
+- Clone the repository
+- Install the dependencies: `npm install`
+- Run the project: `npm run dev`
+- Open in your browser: `http://localhost:3000`
 
-```bash
-# npm
-npm run dev
+## License
 
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+This project is licensed under the MIT license. You can freely use, copy, modify and distribute this project or its parts, if you mention my name as the author and include a copy of the MIT license in your project.
