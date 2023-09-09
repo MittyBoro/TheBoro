@@ -25,7 +25,7 @@
   }
 </script>
 <template>
-  <div @mouseenter="playSound">
+  <span @mouseenter="playSound">
     <slot></slot>
-  </div>
+  </span>
 </template>

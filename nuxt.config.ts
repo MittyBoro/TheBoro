@@ -8,6 +8,7 @@ export default defineNuxtConfig({
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Russo+One&display=swap',
+          // href: 'https://fonts.googleapis.com/css2?family=Flow+Circular&display=swap',
         },
       ],
     },
@@ -16,7 +17,6 @@ export default defineNuxtConfig({
   css: ['~/assets/styles/main.scss'],
   colorMode: {
     classSuffix: '',
-    preference: 'dark',
   },
   components: [
     { path: '~/components/Elements', pathPrefix: false },

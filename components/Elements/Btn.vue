@@ -155,7 +155,7 @@
 
   .btn-mini {
     @apply rounded-md h-9 py-2 text-[0.65rem];
-    @apply sm:rounded-lg sm:h-11 sm:py-3 sm:text-sm;
+    @apply sm:rounded-lg sm:h-11 sm:py-3 sm:text-xs;
   }
 
   .btn-nano {

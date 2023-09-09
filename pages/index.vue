@@ -1,5 +1,7 @@
 <script setup>
-  const page = await useApi().findOne('home-page', { populate: ['seo'] })
+  const page = await useApi().findOne('home-page', {
+    populate: ['seo', 'seo.metaImage'],
+  })
 
   useSeoMeta({
     title: page.data.seo.metaTitle,
@@ -7,6 +9,12 @@
     description: page.data.seo.metaDescription,
     ogDescription: page.data.seo.metaDescription,
   })
+  if (page.data.seo.metaImage) {
+    const image = useExtImg(page.data.seo.metaImage, 'large')
+    useSeoMeta({
+      ogImage: image,
+    })
+  }
 </script>
 
 <template>

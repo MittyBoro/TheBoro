@@ -10,9 +10,7 @@
     <div class="title">Мой опыт</div>
 
     <div class="flex">
-      <div
-        class="w-2 rounded-lg shadow-xl dark:shadow-gray-800 dark:bg-gray-950 shadow-black/20 bg-gray-300"
-      ></div>
+      <div class="virtical-line"></div>
       <div class="ml-9 grid gap-6 w-full">
         <Card v-for="item in resume" :key="item.id">
           <div class="date mb-5">
@@ -29,6 +27,12 @@
 </template>
 
 <style lang="scss" scoped>
+  .virtical-line {
+    @apply mt-5 w-2 rounded-lg;
+    @apply bg-gradient-to-b via-[calc(100%-300px)] to-transparent;
+    @apply dark:from-gray-950 dark:via-gray-950 dark:shadow-gray-800 shadow-black/20;
+    @apply from-gray-300 via-gray-300 shadow-xl;
+  }
   .card {
     overflow: visible;
     &::before {

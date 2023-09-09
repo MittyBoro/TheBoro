@@ -16,10 +16,11 @@
     imageRef.value.classList.add('opacity-100')
   }
   onMounted(() => {
-    imageRef.value.addEventListener('load', setImgLoaded)
-  })
-  onBeforeUnmount(() => {
-    imageRef.value.removeEventListener('load', setImgLoaded)
+    if (!imageRef.value.complete) {
+      imageRef.value.onload = setImgLoaded
+    } else {
+      setImgLoaded()
+    }
   })
 </script>
 <template>

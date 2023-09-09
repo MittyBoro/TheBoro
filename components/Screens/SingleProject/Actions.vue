@@ -9,14 +9,6 @@
 </script>
 <template>
   <div class="flex gap-3">
-    <NuxtLink
-      v-if="project.srcLink"
-      :to="project.srcLink"
-      target="_blank"
-      class="mr-5"
-    >
-      <Btn second mini></Btn>
-    </NuxtLink>
     <Btn
       v-if="project.website"
       :href="project.website"
@@ -32,6 +24,7 @@
       :href="project.srcLink"
       is="link"
       target="_blank"
+      third
       mini
     >
       <Icon name="github" class="w-4 h-4 mr-2" />

@@ -3,7 +3,7 @@
   const pageId = useRoute().params.slug
 
   const page = await api.findOne('projects/' + pageId, {
-    populate: ['seo', 'thumb', 'categories', 'tags'],
+    populate: ['seo', 'seo.metaImage', 'thumb', 'categories', 'tags'],
     fields: ['title', 'description', 'website', 'srcLink', 'views'],
   })
 
@@ -32,8 +32,13 @@
       ogTitle: page.data.seo.metaTitle,
       description: page.data.seo.metaDescription,
       ogDescription: page.data.seo.metaDescription,
-      ogImage: 'https://example.com/image.png',
     })
+    if (page.data.seo.metaImage) {
+      const image = useExtImg(page.data.seo.metaImage, 'large')
+      useSeoMeta({
+        ogImage: image,
+      })
+    }
   }
   useSeoMeta({
     title: page.title,
