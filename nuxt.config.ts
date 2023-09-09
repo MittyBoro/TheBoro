@@ -2,7 +2,7 @@ import svgLoader from 'vite-svg-loader'
 
 export default defineNuxtConfig({
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' },
+    pageTransition: { name: 'page' },
     head: {
       link: [
         {
@@ -23,14 +23,16 @@ export default defineNuxtConfig({
     '~/components',
   ],
   image: {
-    dir: 'assets/images',
-    format: ['webp'],
+    provider: 'netlify', // !!! ???!?!?!?!?!
+    strapi: {
+      baseURL: process.env.STRAPI_URL,
+    },
   },
   modules: [
+    '@nuxt/image',
     '@nuxtjs/strapi',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
-    '@nuxt/image',
   ],
   postcss: {
     plugins: {
@@ -41,7 +43,6 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      strapiUrl: process.env.STRAPI_URL,
       strapiToken: process.env.STRAPI_TOKEN,
     },
   },
@@ -53,7 +54,6 @@ export default defineNuxtConfig({
     cookie: {},
     cookieName: 'strapi_jwt',
   },
-
   vite: {
     plugins: [svgLoader()],
   },

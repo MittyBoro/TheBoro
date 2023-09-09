@@ -1,7 +1,7 @@
 {
   "name": "the_boro",
   "displayName": "TheBoro",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This project is my personal portfolio, where I showcase my skills in web development and design.",
   "private": true,
   "config": {
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxt/image": "^1.0.0-rc.1",
     "@nuxtjs/color-mode": "^3.3.0",
     "@nuxtjs/strapi": "^1.9.3",
     "@nuxtjs/tailwindcss": "^6.8.0",
@@ -32,7 +33,6 @@
     "vite-svg-loader": "^4.0.0"
   },
   "dependencies": {
-    "@nuxt/image": "^1.0.0-rc.1",
     "swiper": "^10.2.0",
     "vue3-popper": "^1.5.0"
   }

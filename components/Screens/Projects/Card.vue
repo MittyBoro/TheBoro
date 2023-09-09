@@ -6,6 +6,11 @@
   const link = `/projects/${item.id}`
 
   const attr = item.attributes
+
+  const imageRef = ref(null)
+  onMounted(() => {
+    useImgSetLoaded(imageRef, 'opacity-100')
+  })
 </script>
 
 <template>
@@ -15,9 +20,11 @@
         class="shadow-lg rounded-lg overflow-hidden cursor-pointer aspect-[16/10]"
       >
         <img
-          :src="useExtImg(attr.thumb, 'small')"
+          :src="useStrapiImg(attr.thumb, 'small')"
           :alt="attr.title"
           class="image-item object-cover object-center w-full h-full"
+          loading="lazy"
+          ref="imageRef"
         />
       </div>
       <div class="title-item">

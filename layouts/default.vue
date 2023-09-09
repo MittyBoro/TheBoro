@@ -28,6 +28,7 @@
 </script>
 
 <template>
+  <Preloader />
   <div class="wrapper">
     <MouseLight />
     <ColorMode fixed v-show="!isProject" />

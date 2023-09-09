@@ -34,7 +34,7 @@
       ogDescription: page.data.seo.metaDescription,
     })
     if (page.data.seo.metaImage) {
-      const image = useExtImg(page.data.seo.metaImage, 'large')
+      const image = useStrapiImg(page.data.seo.metaImage, 'large')
       useSeoMeta({
         ogImage: image,
       })

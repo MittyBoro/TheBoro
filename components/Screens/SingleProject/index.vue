@@ -12,15 +12,8 @@
     return list.join(', ')
   })
 
-  const setImgLoaded = () => {
-    imageRef.value.classList.add('opacity-100')
-  }
   onMounted(() => {
-    if (!imageRef.value.complete) {
-      imageRef.value.onload = setImgLoaded
-    } else {
-      setImgLoaded()
-    }
+    useImgSetLoaded(imageRef, 'opacity-100')
   })
 </script>
 <template>
@@ -43,7 +36,7 @@
         <div class="mask-background pointer-events-none aspect-[16/9]">
           <img
             loading="lazy"
-            :src="useExtImg(project.thumb)"
+            :src="useStrapiImg(project.thumb, 'large')"
             class="mask-image object-cover object-top w-full h-full opacity-0 transition-opacity duration-300 select-none"
             :alt="project.title"
             ref="imageRef"

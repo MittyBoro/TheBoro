@@ -51,7 +51,7 @@
     imgStyle.filter = `saturate(${saturate}%)`
 
     // изменение цвета рамки
-    let bgP = 100 - avatarDistance.value * 100
+    let bgP = (100 - avatarDistance.value * 100).toFixed(2)
     avatarStyle.backgroundPosition = `${bgP}% ${bgP}%`
 
     if (getDistanceToElement(event, avatarDiv.value) < DISTANCE_TO_OBJECT) {
@@ -80,16 +80,16 @@
     ref="avatarDiv"
   >
     <NuxtLink to="/" class="avatar-img-wrap">
-      <NuxtImg
+      <NuxtPicture
         v-show="colorMode.value === 'dark'"
-        src="/ava-dark.png"
+        src="/images/ava_dark.jpg"
         width="300"
         alt="Dima Boro"
-        :style="imgStyle"
+        :imgAttrs="{ style: imgStyle }"
       />
-      <NuxtImg
+      <NuxtPicture
         v-show="colorMode.value === 'light'"
-        src="/ava-light.jpg"
+        src="/images/ava_light.jpg"
         width="200"
         alt="Dima Boro"
       />
