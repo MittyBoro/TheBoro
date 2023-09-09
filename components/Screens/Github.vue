@@ -14,9 +14,14 @@
       </p>
     </div>
     <div class="flex mt-10 justify-center">
-      <Btn second>
+      <Btn
+        is="link"
+        to="https://github.com/theboro/theboro"
+        target="_blank"
+        second
+      >
         <Icon name="github" class="mr-3" />
-        theboro src
+        theboro src
       </Btn>
     </div>
   </section>
