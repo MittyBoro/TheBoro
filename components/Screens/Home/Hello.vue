@@ -30,7 +30,7 @@
 
     <div class="flex mt-auto pt-4 pb-10 sm:hidden">
       <HashLink to="#projects" class="mx-auto">
-        <Btn mini class="lg:mr-5">Портфолио</Btn>
+        <Btn class="lg:mr-5">Портфолио</Btn>
       </HashLink>
     </div>
 
@@ -58,7 +58,7 @@
 <style lang="scss" scoped>
   .hello-item {
     --h-padding: theme(spacing.14);
-    @apply flex flex-col min-h-[450px];
+    @apply flex flex-col min-h-[550px];
   }
   @screen sm {
     .hello-item {

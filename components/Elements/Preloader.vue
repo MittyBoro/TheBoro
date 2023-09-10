@@ -78,12 +78,13 @@
       &::before {
         @apply w-80 h-80;
         @apply border-l-transparent border-r-transparent;
-        opacity: 0.7;
+        opacity: 0.5;
       }
       &::after {
         @apply w-60 h-60;
         @apply border-t-transparent border-b-transparent;
         animation-duration: 1.6s;
+        opacity: 0.85;
       }
     }
   }

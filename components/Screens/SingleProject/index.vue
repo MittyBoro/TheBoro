@@ -20,8 +20,8 @@
   <section class="project-screen container -mt-10">
     <Card>
       <template #top>
-        <div class="absolute top-0 right-0 bottom-0 z-30">
-          <div class="sticky top-4 flex gap-3 sm:gap-5">
+        <div class="absolute top-0 right-0 bottom-0 z-30 pointer-events-none">
+          <div class="sticky top-4 flex gap-3 sm:gap-5 pointer-events-auto">
             <ColorMode class="btn-mode" />
             <Btn
               is="link"
@@ -51,7 +51,9 @@
                 class="pretitle flex items-center dark:text-white text-black drop-shadow-sm"
               >
                 <NuxtLink to="/#projects" class="link">Проекты</NuxtLink>
-                <span class="px-1.5 md:px-3 opacity-40">/</span>
+                <span class="px-1.5 md:px-3 opacity-40" v-if="categoriesStr">
+                  /
+                </span>
                 <span class="opacity-80">{{ categoriesStr }}</span>
               </div>
               <div class="ml-auto pl-5 flex items-center opacity-60">
@@ -97,12 +99,19 @@
   .card {
     @apply rounded-t-none;
   }
+
+  .project-screen {
+    @apply -mx-3 w-auto sm:mx-auto;
+  }
   .btn-close {
     @apply rounded-none rounded-l-xl;
   }
   .btn-close,
   .btn-mode {
-    @apply dark:bg-black/30 bg-white/50 shadow-xl;
+    @apply dark:bg-black/60 bg-white/80;
+    &:not(:hover) {
+      opacity: 0.7;
+    }
   }
   .container-md {
     @apply md:max-w-3xl;

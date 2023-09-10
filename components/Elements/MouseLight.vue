@@ -1,23 +1,20 @@
 <script setup>
   const colorMode = useColorMode()
 
-  const MAIN_OPACITY = colorMode.value === 'dark' ? 0.8 : 1
+  const MAIN_OPACITY = colorMode.value === 'dark' ? 0.7 : 1
   const DISTANCE_TO_OBJECTS = 200
 
   const lightStyle = reactive({
-    top: 0,
-    left: 0,
-    opacity: 0,
+    top: '-9999px',
+    left: '-9999px',
+    opacity: MAIN_OPACITY,
   })
 
-  const handleMouseMove = (event) => {
-    if (event.touches?.length > 0) {
-      lightStyle.top = event.touches[0].clientY + 'px'
-      lightStyle.left = event.touches[0].clientX + 'px'
-    } else {
-      lightStyle.top = event.clientY + 'px'
-      lightStyle.left = event.clientX + 'px'
-    }
+  const handleTracking = (event) => {
+    const position = getPositionByEvent(event)
+
+    lightStyle.top = position.y + 'px'
+    lightStyle.left = position.x + 'px'
 
     lightStyle.opacity = MAIN_OPACITY
 
@@ -46,23 +43,20 @@
     })
   }
 
-  let event
-
   onMounted(() => {
-    if ('ontouchmove' in document.documentElement) {
-      event = 'touchmove'
-    } else {
-      event = 'mousemove'
-    }
-    document.addEventListener(event, handleMouseMove)
+    document.addEventListener('touchmove', handleTracking)
+    document.addEventListener('mousemove', handleTracking)
   })
   onUnmounted(() => {
-    document.removeEventListener(event, handleMouseMove)
+    document.removeEventListener('touchmove', handleTracking)
+    document.removeEventListener('mousemove', handleTracking)
   })
 </script>
 
 <template>
-  <div class="mouse-light" :style="lightStyle"></div>
+  <div>
+    <div class="mouse-light" :style="[lightStyle]"></div>
+  </div>
 </template>
 
 <style lang="scss" scoped>

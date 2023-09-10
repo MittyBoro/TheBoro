@@ -25,6 +25,16 @@
       },
     ],
   })
+
+  onUpdated(() => {
+    if (window.location.hash) {
+      history.replaceState(
+        {},
+        document.title,
+        window.location.pathname + window.location.search
+      )
+    }
+  })
 </script>
 
 <template>
@@ -56,7 +66,8 @@
       left: -100px;
       right: -100px;
       height: 200px;
-      @apply bg-primary-200 dark:bg-primary-700/50 blur-[100px] animate-pulse;
+      @apply bg-primary-300 dark:bg-primary-700 blur-[100px] animate-pulse;
+      opacity: 0.7;
       animation-duration: 5s;
       // background-position: 50% 100%;
       // background-size: 150% auto;

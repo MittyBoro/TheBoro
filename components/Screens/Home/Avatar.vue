@@ -1,6 +1,4 @@
 <script setup>
-  const DISTANCE_TO_OBJECT = 200
-
   const avatarDiv = ref(null)
 
   const imgStyle = reactive({
@@ -25,36 +23,39 @@
   const colorMode = useColorMode()
 
   const getDistanceValues = (from, to, event) => {
+    let distance = avatarDiv.value?.offsetWidth * 1
     const value = getValueByDistance(
       event,
       avatarDiv.value,
       from,
       to,
-      DISTANCE_TO_OBJECT
+      distance
     ).toFixed(2)
 
     return parseFloat(value)
   }
   const avatarDistance = useAvatarDistance()
 
-  const handleMouseMove = (event) => {
-    avatarDistance.value = getDistanceValues(0, 1, event)
+  const handleTracking = (event) => {
+    if (colorMode.value === 'light') {
+      avatarDistance.value = 0
+    } else {
+      const position = getPositionByEvent(event)
+      avatarDistance.value = getDistanceValues(0, 1, position)
 
-    if (colorMode.value !== 'dark') {
-      return
+      // приближение и стили авы
+      imgStyle.transformProps.scale = 1 + avatarDistance.value * 0.7
+      imgStyle.transformProps.translateY = avatarDistance.value * 8 + '%'
+      let saturate = (75 + avatarDistance.value * 50).toFixed(1)
+      imgStyle.filter = `saturate(${saturate}%)`
     }
 
-    // приближение и стили авы
-    imgStyle.transformProps.scale = 1 + avatarDistance.value * 0.7
-    imgStyle.transformProps.translateY = avatarDistance.value * 8 + '%'
-    let saturate = (75 + avatarDistance.value * 50).toFixed(1)
-    imgStyle.filter = `saturate(${saturate}%)`
-
     // изменение цвета рамки
+    // остаётся на случай переключения режима
     let bgP = (100 - avatarDistance.value * 100).toFixed(2)
     avatarStyle.backgroundPosition = `${bgP}% ${bgP}%`
 
-    if (getDistanceToElement(event, avatarDiv.value) < DISTANCE_TO_OBJECT) {
+    if (avatarDistance.value > 0) {
       // вибрация фото
       avatarStyle.animationPlayState = 'running'
       let shift = (avatarDistance.value * 3).toFixed(0) + 'px'
@@ -64,12 +65,19 @@
     }
   }
 
-  onMounted(() => {
-    document.addEventListener('mousemove', handleMouseMove)
-  })
+  const handleTrackingWrapper = (event) => {
+    setTimeout(() => {
+      handleTracking(event)
+    }, 4)
+  }
 
+  onMounted(() => {
+    document.addEventListener('touchmove', handleTracking)
+    document.addEventListener('mousemove', handleTrackingWrapper)
+  })
   onUnmounted(() => {
-    document.removeEventListener('mousemove', handleMouseMove)
+    document.removeEventListener('touchmove', handleTracking)
+    document.removeEventListener('mousemove', handleTrackingWrapper)
   })
 </script>
 

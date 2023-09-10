@@ -24,9 +24,9 @@
 
   const pX = computed(() => {
     if (props.square) return ''
-    if (props.mini) return 'px-6'
-    else if (props.nano) return 'px-3'
-    else return 'px-8'
+    if (props.mini) return 'px-3 sm:px-6'
+    else if (props.nano) return 'px-2 sm:px-3'
+    else return 'px-6 sm:px-8'
   })
   const typeClass = computed(() => {
     if (props.second) return 'btn-second'
@@ -50,13 +50,13 @@
 
 <template>
   <component :is="component" :class="className">
-    <AudioHover
+    <AudioClick
       class="btn-inner flex items-center justify-center w-full h-full whitespace-nowrap"
       :muted="muted"
     >
       <Icon v-if="props.icon" :name="props.icon" />
       <slot></slot>
-    </AudioHover>
+    </AudioClick>
   </component>
 </template>
 
@@ -80,6 +80,11 @@
       svg {
         @apply scale-110;
       }
+    }
+    &:active {
+      @apply translate-y-0.5;
+      @apply shadow-md;
+      @apply dark:shadow-gray-950/50 shadow-gray-500/30;
     }
     &::before {
       @apply rounded-2xl;
@@ -109,9 +114,7 @@
     @apply from-primary-600 via-primary-600 to-primary-500;
     &:hover {
       background-position: 0% 50%;
-      @apply shadow-xl text-white;
-      @apply dark:shadow-primary-900;
-      @apply shadow-primary-600/40;
+      @apply text-white;
     }
   }
 

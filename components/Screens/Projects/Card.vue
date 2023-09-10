@@ -16,7 +16,8 @@
 <template>
   <Card class="hover max-w-2xl">
     <template #top>
-      <div
+      <NuxtLink
+        :to="link"
         class="shadow-lg rounded-lg overflow-hidden cursor-pointer aspect-[16/10]"
       >
         <img
@@ -26,7 +27,7 @@
           loading="lazy"
           ref="imageRef"
         />
-      </div>
+      </NuxtLink>
       <div class="title-item">
         <div
           class="pretitle-row dark:text-white text-black flex justify-between items-center mb-4"
@@ -76,7 +77,7 @@
 
   .title-item {
     @apply absolute left-0 right-0 bottom-0 p-4 sm:p-8;
-    @apply transition-opacity duration-300;
+    @apply transition duration-300;
   }
 
   .card {
@@ -94,12 +95,8 @@
         @apply blur opacity-70 scale-110;
       }
 
-      .pretitle-row {
-        @apply opacity-0;
-      }
       .title-item {
-        opacity: 0.5;
-        @apply blur-[1px];
+        @apply opacity-0 blur translate-y-4;
       }
     }
   }

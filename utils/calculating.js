@@ -1,5 +1,5 @@
 const getValueByDistance = (
-  event,
+  cursorPosition,
   element,
   fromValue,
   toValue,
@@ -11,7 +11,7 @@ const getValueByDistance = (
   const minValue = Math.min(fromValue, toValue)
   const maxValue = Math.max(fromValue, toValue)
 
-  const distance = getDistanceToElement(event, element)
+  const distance = getDistanceToElement(cursorPosition, element)
   const normalizedDistance = Math.min(distance, maxDistance)
 
   const valueChange = (normalizedDistance / maxDistance) * valueRange
@@ -26,12 +26,12 @@ const getValueByDistance = (
   return newValue
 }
 
-const getDistanceToElement = (event, element) => {
+const getDistanceToElement = (cursorPosition, element) => {
   const elementRect = element.getBoundingClientRect()
   const distance =
     Math.sqrt(
-      (event.clientX - (elementRect.left + elementRect.width / 2)) ** 2 +
-        (event.clientY - (elementRect.top + elementRect.height / 2)) ** 2
+      (cursorPosition.x - (elementRect.left + elementRect.width / 2)) ** 2 +
+        (cursorPosition.y - (elementRect.top + elementRect.height / 2)) ** 2
     ) -
     elementRect.width / 2
 
