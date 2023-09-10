@@ -2,6 +2,7 @@
   import Popper from 'vue3-popper/dist/popper.esm'
 
   const avatarDiv = ref(null)
+  const audio = ref(null)
 
   const imgStyle = reactive({
     transform: '',
@@ -25,7 +26,7 @@
   const colorMode = useColorMode()
 
   const getDistanceValues = (from, to, event) => {
-    let distance = avatarDiv.value?.offsetWidth * 1
+    let distance = avatarDiv.value?.offsetWidth * 1.5
     const value = getValueByDistance(
       event,
       avatarDiv.value,
@@ -50,6 +51,10 @@
       imgStyle.transformProps.translateY = avatarDistance.value * 8 + '%'
       let saturate = (75 + avatarDistance.value * 50).toFixed(1)
       imgStyle.filter = `saturate(${saturate}%)`
+
+      if (audio.value) {
+        audio.value.volume = (avatarDistance.value * 0.8).toFixed(2)
+      }
     }
 
     // изменение цвета рамки
@@ -73,15 +78,32 @@
     }, 4)
   }
 
+  const audioInit = async () => {
+    audio.value = new Audio()
+    audio.value.src = (await import('~/assets/audios/V.mp3')).default
+    audio.value.volume = 0
+    audio.value.play()
+  }
+  const audioMute = () => {
+    if (audio.value) {
+      audio.value.volume = 0
+    }
+  }
+
   const easterEgg = useEasterEgg()
 
   onMounted(() => {
     document.addEventListener('touchmove', handleTracking)
     document.addEventListener('mousemove', handleTrackingWrapper)
+    avatarDiv.value.addEventListener('click', audioInit, { once: true })
+    window.addEventListener('mouseout', audioMute)
+    window.addEventListener('blur', audioMute)
   })
   onUnmounted(() => {
     document.removeEventListener('touchmove', handleTracking)
     document.removeEventListener('mousemove', handleTrackingWrapper)
+    window.removeEventListener('mouseout', audioMute)
+    window.removeEventListener('blur', audioMute)
   })
 </script>
 
@@ -92,7 +114,7 @@
   >
     <Popper
       :content="`Жми меня${''.padEnd(easterEgg, '.')}🙃`"
-      class="absolute inset-0 z-20"
+      class="absolute inset-0 whitespace-nowrap z-20"
       arrow
       right
       :show="easterEgg > 0 && easterEgg < 4"
@@ -134,7 +156,7 @@
     .avatar-img-wrap {
       @apply block rounded-full overflow-hidden select-none transition-transform;
       &:active {
-        transform: scale(1.2);
+        transform: scale(1.1);
       }
     }
     img {

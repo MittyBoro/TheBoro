@@ -35,7 +35,7 @@
 
 <style lang="scss" scoped>
   .btn-fixed {
-    @apply fixed top-5 right-5 z-30;
+    @apply fixed top-5 right-5 z-[100];
   }
 </style>
 

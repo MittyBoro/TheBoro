@@ -2,6 +2,7 @@
   import svgRaw from '~/assets/images/logo.svg?raw'
 
   const isLoaded = ref(false)
+  const zIndex = ref(999)
 
   const easterEgg = useEasterEgg()
 
@@ -10,6 +11,9 @@
   }
   const setLoaded = () => {
     isLoaded.value = true
+    setTimeout(() => {
+      zIndex.value = 99
+    }, 1000)
   }
 
   const isEgg = computed(() => {
@@ -47,7 +51,7 @@
     @apply p-10 bg-gray-200 dark:bg-gray-950;
     @apply transition-all duration-300 delay-300;
     overflow: hidden;
-    z-index: 999;
+    z-index: v-bind(zIndex);
     &.loaded {
       opacity: 0;
       visibility: hidden;
@@ -90,16 +94,16 @@
       &::after {
         content: '';
         position: absolute;
-        @apply border-[12px] border-primary-600 border-r-transparent border-b-0 rounded-full animate-spin transition-all;
+        @apply border-[12px] border-primary-600  border-r-transparent border-b-0 rounded-full animate-spin transition-all;
       }
       &::before {
         @apply w-80 h-80;
-        animation-duration: 1.5s;
+        animation-duration: 1.3s;
       }
       &::after {
         @apply w-60 h-60;
         @apply border-current border-r-transparent;
-        animation-duration: 1.4s;
+        animation-duration: 1.1s;
       }
     }
   }
