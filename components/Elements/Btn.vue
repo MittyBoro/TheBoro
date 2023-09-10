@@ -77,9 +77,6 @@
       @apply -translate-y-0.5;
       @apply shadow-xl;
       @apply dark:shadow-gray-950/50 shadow-gray-500/30;
-      svg {
-        @apply scale-110;
-      }
     }
     &:active {
       @apply translate-y-0.5;

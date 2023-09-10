@@ -1,4 +1,6 @@
 <script setup>
+  import Popper from 'vue3-popper/dist/popper.esm'
+
   const avatarDiv = ref(null)
 
   const imgStyle = reactive({
@@ -71,6 +73,8 @@
     }, 4)
   }
 
+  const easterEgg = useEasterEgg()
+
   onMounted(() => {
     document.addEventListener('touchmove', handleTracking)
     document.addEventListener('mousemove', handleTrackingWrapper)
@@ -83,25 +87,34 @@
 
 <template>
   <div
-    class="avatar w-28 sm:w-40 star aspect-square"
-    :style="avatarStyle"
-    ref="avatarDiv"
+    @click="easterEgg--"
+    class="relative w-28 sm:w-40 star aspect-square user-select-none"
   >
-    <NuxtLink to="/" class="avatar-img-wrap">
-      <NuxtPicture
-        v-show="colorMode.value === 'dark'"
-        src="/images/ava_dark.jpg"
-        width="300"
-        alt="Dima Boro"
-        :imgAttrs="{ style: imgStyle }"
-      />
-      <NuxtPicture
-        v-show="colorMode.value === 'light'"
-        src="/images/ava_light.jpg"
-        width="200"
-        alt="Dima Boro"
-      />
-    </NuxtLink>
+    <Popper
+      :content="`Жми меня${''.padEnd(easterEgg, '.')}🙃`"
+      class="absolute inset-0 z-20"
+      arrow
+      right
+      :show="easterEgg > 0 && easterEgg < 4"
+    >
+      <div class="avatar" :style="[avatarStyle]" ref="avatarDiv">
+        <NuxtLink to="/" class="avatar-img-wrap">
+          <NuxtPicture
+            v-show="colorMode.value === 'dark'"
+            src="/images/ava_dark.jpg"
+            width="300"
+            alt="Dima Boro"
+            :imgAttrs="{ style: imgStyle }"
+          />
+          <NuxtPicture
+            v-show="colorMode.value === 'light'"
+            src="/images/ava_light.jpg"
+            width="200"
+            alt="Dima Boro"
+          />
+        </NuxtLink>
+      </div>
+    </Popper>
   </div>
 </template>
 
@@ -111,7 +124,6 @@
     background-position: 100% 100%;
     background-size: 250% 250%;
     animation: vibration 0.7s infinite;
-    overflow: hidden;
 
     @apply p-1.5 sm:p-2 relative rounded-full;
     @apply shadow-2xl;
@@ -120,7 +132,10 @@
     @apply transition-shadow;
 
     .avatar-img-wrap {
-      @apply block rounded-full overflow-hidden select-none;
+      @apply block rounded-full overflow-hidden select-none transition-transform;
+      &:active {
+        transform: scale(1.2);
+      }
     }
     img {
       @apply dark:saturate-[75%];

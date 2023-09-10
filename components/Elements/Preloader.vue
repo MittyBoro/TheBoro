@@ -3,9 +3,18 @@
 
   const isLoaded = ref(false)
 
+  const easterEgg = useEasterEgg()
+
+  const resetEasterEgg = () => {
+    easterEgg.value = 4
+  }
   const setLoaded = () => {
     isLoaded.value = true
   }
+
+  const isEgg = computed(() => {
+    return isLoaded.value
+  })
 
   onMounted(() => {
     window.addEventListener('load', setLoaded)
@@ -19,7 +28,11 @@
 </script>
 
 <template>
-  <div class="preloader" :class="{ loaded: isLoaded }">
+  <div
+    @dblclick="resetEasterEgg"
+    class="preloader"
+    :class="{ loaded: isLoaded && easterEgg > 0, 'cursor-pointer': isEgg }"
+  >
     <div class="p-wrapper">
       <div class="p-circle"></div>
       <svg class="p-icon" v-html="svgRaw"></svg>
@@ -42,8 +55,13 @@
         opacity: 0;
       }
       .p-circle {
-        transform: scale(2);
+        transform: scale(1.5);
         opacity: 0;
+
+        &::before,
+        &::after {
+          border-width: 0;
+        }
       }
       // @apply opacity-0;
     }
@@ -72,31 +90,26 @@
       &::after {
         content: '';
         position: absolute;
-        @apply border-[12px] border-primary-600 rounded-full animate-spin;
-        animation-duration: 1.5s;
+        @apply border-[12px] border-primary-600 border-r-transparent border-b-0 rounded-full animate-spin transition-all;
       }
       &::before {
         @apply w-80 h-80;
-        @apply border-l-transparent border-r-transparent;
-        opacity: 0.5;
+        animation-duration: 1.5s;
       }
       &::after {
         @apply w-60 h-60;
-        @apply border-t-transparent border-b-transparent;
-        animation-duration: 1.6s;
-        opacity: 0.85;
+        @apply border-current border-r-transparent;
+        animation-duration: 1.4s;
       }
     }
   }
   @keyframes pulseSize {
-    from {
+    from,
+    to {
       transform: scale(1);
     }
     60% {
       transform: scale(1.1);
-    }
-    to {
-      transform: scale(1);
     }
   }
 </style>

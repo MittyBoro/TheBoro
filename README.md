@@ -8,13 +8,12 @@ This project is my personal portfolio, where I showcase my skills in web develop
 
 For this project, I used:
 
-- HTML
-- CSS
-- SASS
-- TailwindCSS
-- JavaScript
 - Vue.js
 - Nuxt 3
+- Node
+- SASS
+- TailwindCSS
+- Strapi
 - Nginx
 
 ## Running the project

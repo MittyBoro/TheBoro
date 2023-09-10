@@ -7,7 +7,9 @@
     if (props.muted) return
     const audio = new Audio()
     audio.src = (await import('~/assets/audios/1.mp3')).default
-    audio.play()
+    setTimeout(() => {
+      audio.play()
+    }, 40)
   }
 </script>
 <template>
